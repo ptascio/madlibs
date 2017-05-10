@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+tuesday = Madlib.create([{title: 'Tuesday The Cat', story: '
+  Tuesday is a nice cat with a __adj__ _noun___. She is always __verb__.
+  Tuesday likes to ___verb___ and ___verb___. I think she is a __adj___ cool __noun__
+  '}])
