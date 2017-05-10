@@ -6,6 +6,7 @@ class MadlibsController < ApplicationController
 
   def show
     @madlib = Madlib.find(params[:id])
+    render 'show'
   end
 
 end
