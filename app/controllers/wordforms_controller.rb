@@ -10,7 +10,6 @@ class WordformsController < ApplicationController
 
   def show
     @wordform = Wordform.find(params[:id])
-    debugger
     render "show"
   end
 

@@ -23,7 +23,6 @@ class MadlibsController < ApplicationController
     @madlib.wordform.save!
     @madlib.misswords = nil
     @madlib.save!
-    debugger
     render "show"
   end
 
