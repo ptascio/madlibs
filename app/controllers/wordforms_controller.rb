@@ -10,7 +10,7 @@ class WordformsController < ApplicationController
 
   def show
     @wordform = Wordform.find(params[:id])
-    # gsub"\n", "" then split(", ") gets length
+    debugger
     render "show"
   end
 
@@ -23,7 +23,7 @@ class WordformsController < ApplicationController
     #params[:wordform][:misswords]
     @wordform = Wordform.find(params[:id])
     @wordform.misswords = params[:wordform][:misswords]
-    @wordform.save
+    @wordform.save!
     render "show"
   end
 

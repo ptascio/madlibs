@@ -19,6 +19,11 @@ class MadlibsController < ApplicationController
 
   def edit
     @madlib = Madlib.find(params[:id])
+    @madlib.wordform.misswords = nil
+    @madlib.wordform.save!
+    @madlib.misswords = nil
+    @madlib.save!
+    debugger
     render "show"
   end
 

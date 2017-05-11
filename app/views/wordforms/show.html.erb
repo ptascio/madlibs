@@ -6,13 +6,17 @@
 <%= @wordform.words %>
 <br />
 
+<% if @wordform.misswords.nil? %>
 <%= form_for @wordform, url: {action: "update"} do |f| %>
 <%= f.text_area :misswords, size: "40x12" %>
 <%= f.submit "Submit" %>
 <% end %>
+
+
+<% end %>
 <% if !@wordform.misswords.nil? %>
 <h2>Your Words:</h2>
-<%= @wordform.misswords %>
+<%= @wordform.misswords %><br />
 <%= link_to "Continue", edit_wordform_path(@wordform.id) %>
 <% end %>
 <%= link_to "Titles", madlibs_path %>
