@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510193052) do
+ActiveRecord::Schema.define(version: 20170511113801) do
 
   create_table "madlibs", force: :cascade do |t|
     t.string   "title",      null: false
     t.text     "story",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "verbs", force: :cascade do |t|
+    t.string   "verb"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wordforms", force: :cascade do |t|
+    t.text     "words"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "madlib_id"
+    t.index ["madlib_id"], name: "index_wordforms_on_madlib_id"
   end
 
 end

@@ -2,6 +2,7 @@ class MadlibsController < ApplicationController
 
   def index
     @madlibs = Madlib.all
+    render 'index'
   end
 
   def show

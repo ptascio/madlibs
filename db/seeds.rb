@@ -6,9 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-tuesday = Madlib.create([{title: 'Tuesday The Cat', story: "
-  Tuesday is a nice cat with a(n) __adj__ _noun___.
+@tuesday = Madlib.create({title: 'Tuesday The Cat', story: "
+  Tuesday is a nice cat with a(n) __adj__ __noun__.
   She is always __verb__.
   Tuesday likes to ___verb___ and ___verb___.
   I think she is a __adj___ cool __noun__.
-  "}])
+  "})
+
+  tuesday_form = Wordform.create({words: "1: Adjective, 2: Noun, 3: Verb, 4: Verb,
+    5: Verb, 6: Adjective, 7: Noun
+    "})
+@tuesday.wordform = tuesday_form
