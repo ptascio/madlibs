@@ -1,3 +1,5 @@
 
 <h1><%= @madlib.title %></h1>
 <p><%= simple_format(@madlib.story) %></p>
+<p><%= link_to "Reset", edit_madlib_path(@madlib.id) %></p>
+<p><%= link_to "Titles", madlibs_path %></p>

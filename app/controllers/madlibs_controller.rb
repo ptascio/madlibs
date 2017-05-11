@@ -10,4 +10,16 @@ class MadlibsController < ApplicationController
     render 'show'
   end
 
+  def update
+    @madlib = Madlib.find(params[:id])
+    story = @madlib.array_story
+    @madlib.story = @madlib.populate_story(story);
+    render 'show'
+  end
+
+  def edit
+    @madlib = Madlib.find(params[:id])
+    render "show"
+  end
+
 end

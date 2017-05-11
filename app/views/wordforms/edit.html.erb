@@ -1,0 +1,11 @@
+<p>You entered:</p>
+
+<%= @wordform.misswords %>
+<%= form_for @madlib, url: madlib_path(@madlib.id) do |f| %>
+<%= f.submit "Submit" %>
+<% end %>
+
+<!-- <%= form_for @wordform, url: {action: "update"} do |f| %>
+<%= f.text_area :misswords, size: "40x12" %>
+<%= f.submit "Submit" %>
+<% end %> -->
