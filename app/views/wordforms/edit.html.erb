@@ -4,6 +4,12 @@
 <%= form_for @madlib, url: madlib_path(@madlib.id) do |f| %>
 <%= f.submit "Submit" %>
 <% end %>
+<p>Hit Submit to move forward or... </p>
+<p>Edit your submission</p>
+<%= form_for @wordform, url: wordform_path(@wordform.id) do |f| %>
+<%= f.text_area :misswords, size: "40x12", :misswords => @wordform.misswords %>
+<%= f.submit "Edit" %>
+<% end %>
 
 <!-- <%= form_for @wordform, url: {action: "update"} do |f| %>
 <%= f.text_area :misswords, size: "40x12" %>
