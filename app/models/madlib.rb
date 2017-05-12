@@ -22,4 +22,14 @@ class Madlib < ActiveRecord::Base
   def split_up_misswords
     self.wordform.misswords.split(", ")
   end
+
+  def count_missing_words
+    count = 0
+    self.story.split.each do |word|
+      if word[0] == "_"
+        count+=1
+      end
+    end
+    count
+  end
 end

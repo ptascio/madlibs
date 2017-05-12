@@ -10,6 +10,9 @@ class WordformsController < ApplicationController
 
   def show
     @wordform = Wordform.find(params[:id])
+    @madlib = Madlib.find_by_id(@wordform.madlib_id)
+    @wordform.count = @madlib.count_missing_words
+    @wordform.save!
     render "show"
   end
 
@@ -21,12 +24,13 @@ class WordformsController < ApplicationController
   def update
     #params[:wordform][:misswords]
     @wordform = Wordform.find(params[:id])
-    @wordform.validate_submission(params[:wordform][:misswords])
-    if params[:wordform][:misswords].empty?
-      debugger
+    user_submission = params[:wordform][:misswords]
+    if @wordform.check_if_empty(user_submission)
+      render "show"
+    elsif @wordform.check_over_under(user_submission)
       render "show"
     else
-      @wordform.misswords = params[:wordform][:misswords]
+      @wordform.misswords = user_submission
       @wordform.save!
       @madlib = Madlib.find_by_id(@wordform.madlib_id)
       render "edit"

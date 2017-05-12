@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511120448) do
+ActiveRecord::Schema.define(version: 20170512174137) do
 
   create_table "madlibs", force: :cascade do |t|
     t.string   "title",      null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170511120448) do
     t.datetime "updated_at", null: false
     t.integer  "madlib_id"
     t.string   "misswords"
+    t.integer  "count"
     t.index ["madlib_id"], name: "index_wordforms_on_madlib_id"
   end
 
