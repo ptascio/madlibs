@@ -2,8 +2,13 @@
   <%= @wordform.madlib.title %>
 </h1>
 
+<p>This story needs a total of <%= @wordform.count %> words.</p>
 
-<%= @wordform.words %>
+<p>The words this story needs (in order) are:</p>
+
+<% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
+  <p><%= word %></p>
+<% end %>
 <br />
 
 <% if @wordform.misswords.nil? %>

@@ -14,6 +14,5 @@
   "})
 
   tuesday_form = Wordform.create({words: "1: Adjective, 2: Noun, 3: Verb, 4: Verb,
-    5: Verb, 6: Adjective, 7: Noun
-    "})
+  5: Verb, 6: Adjective, 7: Noun"})
 @tuesday.wordform = tuesday_form

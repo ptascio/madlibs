@@ -12,4 +12,10 @@ class Wordform < ActiveRecord::Base
       self.errors.add(:base, "You need to enter #{self.count} words")
     end
   end
+
+  def make_words_readable
+    self.words = self.words.gsub(/\n/, "")
+    self.words = self.words.split(", ")
+    self.words
+  end
 end
