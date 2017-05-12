@@ -13,7 +13,8 @@
 
 <% if @wordform.misswords.nil? %>
   <%= form_for @wordform, url: {action: "update"} do |f| %>
-    <%= f.text_area :misswords, size: "40x12" %>
+    <%= f.text_area :misswords, size: "40x12",
+    placeholder: "Enter, words, with, a, comma, after, each, one" %>
     <%= f.submit "Submit" %>
   <% end %>
   <% else %>
