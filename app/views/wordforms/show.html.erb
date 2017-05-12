@@ -11,13 +11,13 @@
     <%= f.text_area :misswords, size: "40x12" %>
     <%= f.submit "Submit" %>
   <% end %>
+  <% else %>
+  <%= form_for @wordform, url: {action: "update"} do |f| %>
+    <%= f.text_area :misswords, size: "40x12", :misswords => params[:wordform][:misswords] %>
+    <%= f.submit "Submit" %>
+  <% end %>
 <% end %>
 
-<% if !@wordform.misswords.nil? %>
-  <h2>Your Words:</h2>
-    <%= @wordform.misswords %><br />
-    <%= link_to "Continue", edit_wordform_path(@wordform.id) %>
-<% end %>
 
 <%= form_for(@wordform) do |f| %>
   <% if @wordform.errors.any? %>
