@@ -7,16 +7,28 @@
 <br />
 
 <% if @wordform.misswords.nil? %>
-<%= form_for @wordform, url: {action: "update"} do |f| %>
-<%= f.text_area :misswords, size: "40x12" %>
-<%= f.submit "Submit" %>
+  <%= form_for @wordform, url: {action: "update"} do |f| %>
+    <%= f.text_area :misswords, size: "40x12" %>
+    <%= f.submit "Submit" %>
+  <% end %>
 <% end %>
 
-
-<% end %>
 <% if !@wordform.misswords.nil? %>
-<h2>Your Words:</h2>
-<%= @wordform.misswords %><br />
-<%= link_to "Continue", edit_wordform_path(@wordform.id) %>
+  <h2>Your Words:</h2>
+    <%= @wordform.misswords %><br />
+    <%= link_to "Continue", edit_wordform_path(@wordform.id) %>
 <% end %>
+
+<%= form_for(@wordform) do |f| %>
+  <% if @wordform.errors.any? %>
+    <div>
+      <ul>
+      <% @wordform.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+<% end %>
+
 <%= link_to "Titles", madlibs_path %>

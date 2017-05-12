@@ -21,9 +21,16 @@ class WordformsController < ApplicationController
   def update
     #params[:wordform][:misswords]
     @wordform = Wordform.find(params[:id])
-    @wordform.misswords = params[:wordform][:misswords]
-    @wordform.save!
-    render "show"
+    @wordform.validate_submission(params[:wordform][:misswords])
+    if params[:wordform][:misswords].empty?
+      debugger
+      render "show"
+    else
+      @wordform.misswords = params[:wordform][:misswords]
+      @wordform.save!
+      @madlib = Madlib.find_by_id(@wordform.madlib_id)
+      render "edit"
+    end
   end
 
   def destroy
