@@ -4,21 +4,31 @@ nav
 
 #nav-overrides
   border-radius: 0
+
 #button-overrides
-  top: 12px
+  z-index: 20000
+  bottom: 0px
   left: 20px
   width: 24px
   height: 31px
   position: absolute
   background: transparent
   border: none
+  margin: 0
+  padding: 0
+  transform: rotate(0deg)
+  outline: none
+
 
 #a-overrides
-  display: inline-grid
+  display: inline-block
 
 #a-overrides:hover,
 #a-overrides:focus
   background: #000
+
+#ul-overrides
+  margin: 7.5px -15px
 
 
 .icon-bar
@@ -26,12 +36,16 @@ nav
   background: #fff
   position: absolute
   height: 3px
-  width: 100%
-  border-radius: 7px
-  margin-bottom: 5px
+  width: 75%
+  border-radius: 1px
   &:nth-child(1)
     top: 8px
   &:nth-child(2)
     top: 16px
   &:nth-child(3)
     top: 24px
+
+
+
+#button-overrides:hover *
+  background: #00ffff
