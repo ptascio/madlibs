@@ -4,10 +4,11 @@ class Madlib < ActiveRecord::Base
 
   def populate_story(story)
     misswords_array = self.split_up_misswords
+    punctuation = [".", "?", "!"]
     story.each_with_index do |word,idx|
       if word[0] == "_"
-        if word[-1] == "."
-          story[idx] = misswords_array.shift + "."
+        if punctuation.include?(word[-1])
+          story[idx] = misswords_array.shift + word[-1]
         else
           story[idx] = misswords_array.shift
         end
