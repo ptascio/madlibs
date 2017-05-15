@@ -1,7 +1,7 @@
 <p>You entered:</p>
 
 <%= @wordform.misswords %>
-<%= form_for @madlib, url: madlib_path(@madlib.id) do |f| %>
+<%= form_for @madlib, url: book_madlib_path(@madlib.book_id) do |f| %>
 <%= f.submit "Submit" %>
 <% end %>
 <p>Hit Submit to move forward or... </p>

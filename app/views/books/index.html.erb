@@ -1,0 +1,5 @@
+<h1>All Madlibs Titles</h1>
+
+<% @books.each do |bk| %>
+  <%= link_to bk.title, book_madlibs_path(bk.id) %>,
+<% end %>

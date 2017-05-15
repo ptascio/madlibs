@@ -1,7 +1,7 @@
 class MadlibsController < ApplicationController
 
   def index
-    @madlibs = Madlib.all
+    @madlibs = Madlib.where("book_id" => params[:book_id])
     render 'index'
   end
 

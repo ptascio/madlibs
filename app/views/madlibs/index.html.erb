@@ -1,5 +1,4 @@
-<h1>Madlibs</h1>
-
 <% @madlibs.each do |ml| %>
-  <%= link_to ml.title, wordform_path(ml.id) %>
+  <%= link_to ml.title, wordform_path(ml.id) %>,
+  <br />
 <% end %>
