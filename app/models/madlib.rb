@@ -1,4 +1,5 @@
 class Madlib < ActiveRecord::Base
+  belongs_to :book
   has_one :wordform
 
   def populate_story(story)
