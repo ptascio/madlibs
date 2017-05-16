@@ -10,6 +10,10 @@
 
   <body>
     <%= render 'navbar' %>
+    <%if current_user.nil? %>
+      <a href="auth/facebook">Login with Facebook</a>
+    <% end %>
+
     <% if !current_user.nil? %>
   <ul>
     <li>Logged in as: <%= current_user.username %></li>

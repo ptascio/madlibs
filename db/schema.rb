@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516192221) do
+ActiveRecord::Schema.define(version: 20170516204932) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",      null: false
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20170516192221) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "session_token",   null: false
+    t.string   "provider"
+    t.string   "uid"
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

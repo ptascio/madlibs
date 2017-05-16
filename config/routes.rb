@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :destroy, :show]
   resources :users
   resources :wordforms
+
+  get 'auth/facebook/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect("/")
 end

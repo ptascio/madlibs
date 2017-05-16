@@ -31,6 +31,18 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
+  def self.create_with_omniauth(auth)
+    user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
+    user.username = auth[:extra][:raw_info][:name]
+    user.password = auth["uid"] + auth[:extra][:raw_info][:name]
+    if User.exists?(user)
+      user
+    else
+      user.save!
+      user
+    end
+  end
+
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
