@@ -1,6 +1,7 @@
 nav
   background: black
   color: white
+  height: 55px
 
 #nav-overrides
   border-radius: 0
@@ -72,3 +73,33 @@ nav
 #dropdown-overrides a:hover
   background: #000
   color: #00ffff
+
+
+
+.logo-holder
+  display: flex
+  justify-content: center
+
+
+.logo
+  width: 120px
+  height: 24px
+  max-width: 100%
+  background: url(mdl_logo.png) no-repeat 0 0
+  background-size: cover
+  margin-top: 12px
+
+
+.search
+  display: flex
+  justify-content: flex-end
+
+#glyphicon-overrides
+  position: absolute
+  margin: 15px 0
+  top: 0
+
+
+@media only screen and (max-width: 766px)
+  .logo
+    margin-top: 0px
