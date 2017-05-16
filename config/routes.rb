@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :books do
    resources :madlibs
   end
+  resource :session, only: [:new]
   resources :users
   resources :wordforms
 end
