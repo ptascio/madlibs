@@ -9,11 +9,20 @@ class SessionsController < ApplicationController
     if user.nil?
       render json: "Incorrect Credentials"
     else
+      login!(user)
       redirect_to user_path(user.id)
     end
   end
 
   def new
+  end
+
+  def show
+  end
+
+  def destroy
+    logout!
+    redirect_to session_url
   end
 
 end
