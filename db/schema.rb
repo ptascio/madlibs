@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515165343) do
+ActiveRecord::Schema.define(version: 20170516164734) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",      null: false
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20170515165343) do
     t.string   "misswords"
     t.integer  "book_id"
     t.index ["book_id"], name: "index_madlibs_on_book_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "verbs", force: :cascade do |t|
