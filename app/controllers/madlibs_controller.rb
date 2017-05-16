@@ -2,6 +2,7 @@ class MadlibsController < ApplicationController
 
   def index
     @madlibs = Madlib.where("book_id" => params[:book_id])
+    @book = Book.find(params[:book_id])
     render 'index'
   end
 

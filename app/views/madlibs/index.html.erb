@@ -1,4 +1,9 @@
-<% @madlibs.each do |ml| %>
-  <%= link_to ml.title, wordform_path(ml.id) %>,
-  <br />
-<% end %>
+<h1 id="h1-overrides" class="home-page"><%= @book.title %></h1>
+
+<div class="row">
+  <% @madlibs.each do |ml| %>
+    <div class="col-sm-2">
+      <%= link_to ml.title, wordform_path(ml.id) %>
+    </div>
+  <% end %>
+</div>
