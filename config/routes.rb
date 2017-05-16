@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :books do
    resources :madlibs
   end
-
+  resources :users
   resources :wordforms
 end
