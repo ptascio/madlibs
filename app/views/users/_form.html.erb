@@ -28,3 +28,6 @@
 
   <input type="submit" value="<%= message %>">
 </form>
+<%if current_user.nil? %>
+  <a href="auth/facebook">Sign Up with Facebook</a>
+<% end %>

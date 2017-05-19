@@ -16,3 +16,6 @@
 
   <input type="submit" value="Log in!">
 </form>
+<%if current_user.nil? %>
+  <a href="auth/facebook">Login with Facebook</a>
+<% end %>
