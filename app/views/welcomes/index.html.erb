@@ -2,15 +2,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 text-center" >
-      <%= link_to "Enter", books_path, id: "link-overrides"%>
+      <%= link_to "Enter", books_path %>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12 text-center">
       <p>Welcome to Madlibs on Rails!</p>
       <p>We are happy to offer a variety of Madlibs for you to play.</p>
-      <p><%= link_to "Create an account", new_user_path %> or <%= link_to "sign in with Facebook", session_path %> in order to access exclusive content. Or, </p>
-      <p>Simply <%= link_to "Enter", books_path, id: "link-overrides"%> here or </p>
+      <p><%= link_to "Create an account", new_user_path %></p>
+      <p>or</p>
+      <p><%= link_to "sign in with Facebook", session_path %>  </p>
+      <p>in order to access exclusive content.</p>
+      <p>If you just want to start playing</p>
+      <p>simply <%= link_to "Enter", books_path %> here. </p>
       <p></p>
     </div>
   </div>
