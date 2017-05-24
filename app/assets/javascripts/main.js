@@ -2,15 +2,23 @@
 //   $("#first_input").val("");
 // });
 
-// var button;
-// var textarea;
+var buttons;
+var searcharea;
+var showing = false;
+function toggleSearchBar(){
+  if (!showing){
+    searcharea.style.display = "block";
+    showing = true;
+  }else {
+    searcharea.style.display = "none";
+    showing = false;
+  }
+}
 //
-// function clearForm(){
-//   textarea.value = "";
-// }
-//
-// document.addEventListener("DOMContentLoaded", () => {
-//   textarea = document.getElementById("first_input");
-//   button = document.getElementById("clear_form_button");
-//   button.addEventListener("click", clearForm);
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  searcharea = document.getElementById("searcharea");
+  buttons = document.getElementsByClassName("glyphicon");
+  for (var i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener("click", toggleSearchBar);
+  }
+});
