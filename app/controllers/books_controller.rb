@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   def index
     if !params[:search].nil? && !params[:search].empty?
       @books = Book.search(params[:search])
-      debugger
+      params[:search] = ""
     else
       @books = Book.all
     end
