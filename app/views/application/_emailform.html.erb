@@ -1,8 +1,12 @@
 <li>
-<form id="action-mailer" action="index.html" method="post">
+<form id="action-mailer" action="/mailers" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
   <div class="email-wrapper">
     <label class="email-address"><i class="fa fa-envelope"></i></label>
-    <input class="email-input" type="text" placeholder="Email" name="" value="">
+    <input class="email-input" type="text" placeholder="Email" name="email" value="">
   </div>
 
   <input type="submit" class="email-submit" name="" value="Submit">
