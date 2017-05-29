@@ -18,4 +18,11 @@ class Wordform < ActiveRecord::Base
     self.words = self.words.split(", ")
     self.words
   end
+
+  def make_user_form(madlib)
+    story = madlib.story
+  end
+
+  def parse_user_story
+  end
 end

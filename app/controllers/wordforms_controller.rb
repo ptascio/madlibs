@@ -3,9 +3,14 @@ class WordformsController < ApplicationController
   end
 
   def new
+    @madlib = Madlib.find(params[:madlib])
   end
 
   def create
+    @wordform = Wordform.new
+    @wordform.madlib_id = params[:madlib_id]
+    @madlib = Madlib.find(params[:madlib_id])
+    @wordform.make_user_form(@madlib)
   end
 
   def show

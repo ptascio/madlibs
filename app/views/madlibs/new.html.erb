@@ -8,6 +8,7 @@
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
+     <input type="hidden" name="madlib[book_id]" value="<%= @book.id %>">
   <label for="title">Title:</label>
   <input type="text" name="madlib[title]" value=""><br />
   <label for="">Story:</label><br />

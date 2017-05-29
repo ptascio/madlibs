@@ -1,0 +1,14 @@
+
+<p>This is your new story:</p>
+
+<%= @madlib.title %><br />
+<%= @madlib.story %><br />
+
+<form class="" action="/wordforms" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+  <input type="hidden" name="madlib_id" value="<%= @madlib.id %>">
+  <input type="submit" name="" value="Create My Madlib Form">
+</form>

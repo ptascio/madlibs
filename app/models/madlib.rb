@@ -36,11 +36,15 @@ class Madlib < ActiveRecord::Base
   end
 
   def check_user_story
+    punctuation = [".", "?", "!"]
     count = 0
     user_story = self.array_story
     user_story.each do |word|
-      if (word[0] && word[-1] == "_")
-        count+=1
+      if (word[0] == "_")
+        if (punctuation.include?(word[-1]) && word[-2] == "_") ||
+          (word[-1] == "_")
+          count+=1
+        end
       end
     end
     if count == 0
@@ -48,6 +52,5 @@ class Madlib < ActiveRecord::Base
     else
       return count
     end
-    debugger
   end
 end
