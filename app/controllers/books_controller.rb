@@ -20,9 +20,9 @@ class BooksController < ApplicationController
 
   def create
     @user = current_user
-    @already_have_title = Book.find_by_title(params[:title])
+    @already_have_title = Book.find_by_title(params[:book][:title])
     if @already_have_title
-      render json: "There is already a book by that name. Choose a different name."
+      redirect_to new_book_path, :flash => { :error => "There is already a book by that name. Choose a different name." }
     else
       @book = Book.new(book_params)
       @book.user_id = @user.id

@@ -11,6 +11,8 @@
   <input type="submit" name="" value="Create Book">
 </form>
 
+<p><%= flash[:error] %></p>
+
 <% else %>
 <p>Login or Signup to create a book!</p>
 <% end %>
