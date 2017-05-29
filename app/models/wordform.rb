@@ -20,9 +20,28 @@ class Wordform < ActiveRecord::Base
   end
 
   def make_user_form(madlib)
-    story = madlib.story
+    story = madlib.story.split()
+    sentence = ""
+    count = 1
+    story.each do |word|
+      if word[0] == "_"
+        new_word = parse_user_story(word)
+        sentence += "#{count}: #{new_word}, "
+        count+=1
+      end
+    end
+    return sentence.chop.chop
   end
 
-  def parse_user_story
+  def parse_user_story(word)
+    words = ["adj, verb, noun"]
+    stripped_word = word.gsub(/[^a-zA-Z]/, "")
+    if (stripped_word == "adj")
+      stripped_word = "Adjective"
+    else
+      stripped_word.capitalize!
+    end
+    return stripped_word
   end
+
 end

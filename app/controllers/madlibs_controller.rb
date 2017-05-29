@@ -28,27 +28,31 @@ class MadlibsController < ApplicationController
           Make sure each word you want to leave out begins and ends with a _ ." }
       else
         @madlib.book_id = params[:madlib][:book_id]
-        @madlib.save
+        @madlib.save!
         redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
       end
     end
   end
 
   def update
-    @madlib = Madlib.find(params[:id])
+    @madlib = Madlib.find(params[:book_id])
     story = @madlib.array_story
     @madlib.story = @madlib.populate_story(story);
+
     render 'show'
   end
 
   def edit
-    @madlib = Madlib.find(params[:id])
+    @madlib = Madlib.find(params[:book_id])
     @madlib.wordform.misswords = nil
     @madlib.wordform.save!
     @madlib.misswords = nil
     @madlib.save!
     # render "show"
     redirect_to wordform_path
+  end
+
+  def destroy
   end
 
   def madlib_params
