@@ -1,0 +1,6 @@
+<% if current_user %>
+<p>Hi <%= current_user[:username] %>!</p>
+
+<% else %>
+<p>Login or Signup to create a book!</p>
+<% end %>

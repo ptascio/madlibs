@@ -13,4 +13,14 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     redirect_to
   end
+
+  def new
+    @book = Book.new
+  end
+
+  def create
+
+      render "new"
+    
+  end
 end
