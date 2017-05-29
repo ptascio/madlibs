@@ -19,8 +19,8 @@ class BooksController < ApplicationController
   end
 
   def create
-
+    debugger
       render "new"
-    
+
   end
 end

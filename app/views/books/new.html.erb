@@ -1,6 +1,16 @@
 <% if current_user %>
 <p>Hi <%= current_user[:username] %>!</p>
 
+<form class="" action="/books" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+  <label for="title">Enter the title of the book you'd like to make:</label>
+  <input type="text" name="title" value="">
+  <input type="submit" name="" value="Create Book">
+</form>
+
 <% else %>
 <p>Login or Signup to create a book!</p>
 <% end %>
