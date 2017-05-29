@@ -11,7 +11,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    redirect_to
+    render "show"
   end
 
   def new
@@ -24,7 +24,20 @@ class BooksController < ApplicationController
     if @already_have_title
       render json: "There is already a book by that name. Choose a different name."
     else
-      render "new"
+      @book = Book.new(book_params)
+      @book.user_id = @user.id
+      @book.save
+      redirect_to book_madlibs_path(@book)
     end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy!
+    redirect_to books_path
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :user_id)
   end
 end

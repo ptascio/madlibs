@@ -7,3 +7,7 @@
     </div>
   <% end %>
 </div>
+
+<% if current_user[:id] == @book.user_id %>
+<%= button_to "Delete this Book", @book, :method => :get %>
+<% end %>
