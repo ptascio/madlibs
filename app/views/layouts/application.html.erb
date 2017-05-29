@@ -14,6 +14,7 @@
 
 
     <% if !current_user.nil? %>
+    <%= render "createbook" %>
   <ul>
     <li>Logged in as: <%= current_user.username %></li>
     <li>
@@ -26,6 +27,7 @@
       </form>
     </li>
   </ul>
+
 <% end %>
     <%= yield %>
   </body>
