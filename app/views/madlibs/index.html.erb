@@ -9,5 +9,6 @@
 </div>
 
 <% if current_user[:id] == @book.user_id %>
+<%= button_to "Write a story!", new_book_madlib_path, :method => :get %>
 <%= button_to "Delete this Book", @book, :method => :get %>
 <% end %>

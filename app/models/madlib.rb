@@ -34,4 +34,20 @@ class Madlib < ActiveRecord::Base
     end
     count
   end
+
+  def check_user_story
+    count = 0
+    user_story = self.array_story
+    user_story.each do |word|
+      if (word[0] && word[-1] == "_")
+        count+=1
+      end
+    end
+    if count == 0
+      return false
+    else
+      return count
+    end
+    debugger
+  end
 end

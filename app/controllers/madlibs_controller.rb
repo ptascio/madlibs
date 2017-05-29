@@ -11,6 +11,26 @@ class MadlibsController < ApplicationController
     render 'show'
   end
 
+  def new
+    @book = Book.find(params[:book_id])
+    @madlib = Madlib.new
+  end
+
+  def create
+    title = params[:madlib][:title]
+    story = params[:madlib][:story]
+    debugger
+    if title.empty? || story.empty? || title.nil? || story.nil?
+      redirect_to new_book_madlib_path, :flash => { :error => "Make sure both title and story are filled in." }
+    else
+      @madlib = Madlib.new(madlib_params)
+      if !@madlib.check_user_story
+        redirect_to new_book_madlib_path, :flash => { :error => "It doesn't look like you left out any words.
+          Make sure each word you want to leave out begins and ends with a _ ." }
+      end
+    end
+  end
+
   def update
     @madlib = Madlib.find(params[:id])
     story = @madlib.array_story
@@ -26,6 +46,10 @@ class MadlibsController < ApplicationController
     @madlib.save!
     # render "show"
     redirect_to wordform_path
+  end
+
+  def madlib_params
+    params.require(:madlib).permit(:title, :story)
   end
 
 end
