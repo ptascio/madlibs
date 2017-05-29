@@ -19,8 +19,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    debugger
+    @user = current_user
+    @already_have_title = Book.find_by_title(params[:title])
+    if @already_have_title
+      render json: "There is already a book by that name. Choose a different name."
+    else
       render "new"
-
+    end
   end
 end
