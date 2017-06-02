@@ -1,7 +1,7 @@
 <h1 id="h1-overrides" class="home-page">Log in!</h1>
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" id="login-row">
     <div class="col-sm-12 text-center">
       <form action="/session" method="POST" class="log-in-form">
         <input
@@ -9,15 +9,15 @@
           name="authenticity_token"
           value="<%= form_authenticity_token %>">
 
-        <label for="user_username">Username</label><br>
-        <input type="text" name="user[username]" id="user_username" class="sign-up-inputs">
+        <label for="user_username" class="log-in-label">Username</label><br>
+        <input type="text" name="user[username]" id="user_username" class="log-in-inputs">
         <br>
 
-        <label for="user_password">Password</label><br>
-        <input type="password" name="user[password]" id="user_password" class="sign-up-inputs">
+        <label for="user_password" class="log-in-label">Password</label><br>
+        <input type="password" name="user[password]" id="user_password" class="log-in-inputs">
         <br>
 
-        <input type="submit" value="Log in!" class="sign-up-inputs log-in-button"><br>
+        <input type="submit" value="Log in!" class="log-in-inputs log-in-button"><br>
 
         <%if current_user.nil? %>
           <a href="auth/facebook">
