@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :mailers, only: [:create]
 
   get 'auth/facebook/callback', to: 'sessions#create'
+  get 'auth/facebook/callback', to: 'users#create'
   get 'auth/failure', to: redirect("/")
 end
