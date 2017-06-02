@@ -14,5 +14,9 @@
 <p><%= flash[:error] %></p>
 
 <% else %>
-<p>Login or Signup to create a book!</p>
+<p>
+  <%= link_to "Login", session_path %> or
+  <%= link_to "Signup", new_user_path %>
+  to create a book!
+</p>
 <% end %>
