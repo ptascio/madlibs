@@ -3,12 +3,14 @@
 <div class="row">
   <% @madlibs.each do |ml| %>
     <div class="col-sm-2">
-      <%= link_to ml.title, wordform_path(ml.id) %>
+      <%= link_to ml.title, wordform_path(ml.wordform.id) %>
     </div>
   <% end %>
 </div>
 
-<% if current_user[:id] == @book.user_id %>
-<%= button_to "Write a story!", new_book_madlib_path, :method => :get %>
-<%= button_to "Delete this Book", @book, :method => :get %>
+<% if !current_user.nil? %>
+  <% if current_user[:id] == @book.user_id %>
+    <%= button_to "Write a story!", new_book_madlib_path, :method => :get %>
+    <%= button_to "Delete this Book", @book, :method => :get %>
+  <% end %>
 <% end %>

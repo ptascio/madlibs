@@ -4,7 +4,6 @@ class WordformsController < ApplicationController
 
   def new
     @madlib = Madlib.find(params[:madlib])
-    debugger
   end
 
   def create
@@ -15,11 +14,11 @@ class WordformsController < ApplicationController
     @wordform.save!
     @madlib.wordform = @wordform
     @madlib.save!
-    debugger
     redirect_to wordform_path(@wordform.id, @madlib)
   end
 
   def show
+    debugger
     @wordform = Wordform.find(params[:id])
     @madlib = Madlib.find_by_id(@wordform.madlib_id)
     @wordform.count = @madlib.count_missing_words

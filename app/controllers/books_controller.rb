@@ -3,8 +3,10 @@ class BooksController < ApplicationController
     if !params[:search].nil? && !params[:search].empty?
       @books = Book.search(params[:search])
       params[:search] = ""
+    elsif !current_user.nil?
+      @books = Book.find_user_books(current_user)
     else
-      @books = Book.all
+      @books = Book.where(:user_id => nil).all
     end
     render "index"
   end

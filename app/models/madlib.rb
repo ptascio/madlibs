@@ -53,4 +53,5 @@ class Madlib < ActiveRecord::Base
       return count
     end
   end
+
 end
