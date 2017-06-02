@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
         )
 
       if user.nil?
-        render json: "Incorrect Credentials"
+        # render json: "Incorrect Credentials"
+        redirect_to session_path, :flash => { :error => "Make sure both Username and Password are filled in." }
       else
         login!(user)
         redirect_to user_path(user.id)
