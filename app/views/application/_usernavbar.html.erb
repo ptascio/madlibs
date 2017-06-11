@@ -1,0 +1,16 @@
+<div>
+  <ul class="usernav">
+    <li><h2>Hello <%= current_user.username.capitalize %>!</h2></li>
+    <li><%= link_to "Make a book", new_book_path %></li>
+    <li><%= link_to "Home", root_path %></li>
+    <li>
+      <form action="<%= session_url %>" method="POST">
+        <input type="hidden"
+             name="authenticity_token"
+             value="<%= form_authenticity_token %>">
+        <input type="hidden" value="delete" name="_method" />
+        <input type="submit" class="form-override" value="Logout" />
+      </form>
+    </li>
+  </ul>
+</div>

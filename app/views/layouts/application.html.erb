@@ -14,7 +14,7 @@
 
 
     <% if !current_user.nil? %>
-      <h2>Hello <%= current_user.username.capitalize %>!</h2>
+      <%= render 'usernavbar' %>
     <% end %>
     <%= yield %>
   </body>
