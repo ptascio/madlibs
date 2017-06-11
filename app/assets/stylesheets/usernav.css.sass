@@ -1,15 +1,12 @@
 .usernav
   list-style: none
-  display: flex
-  flex-direction: row
-  justify-content: flex-start
-  flex-wrap: wrap
   margin-top: -20px
   background: #8cd9ae
+  display: flex
 
 .usernav li:not(:first-child)
-  margin: 10px 10px 0 10px
-  font-size: 25px
+  margin-top: 10px
+  font-size: 20px
   padding: 10px
 
 .usernav li:last-child input
@@ -21,3 +18,17 @@
 .usernav li:last-child input:hover
   color: #23527c
   text-decoration: underline
+
+@media only screen and (max-width: 556px)
+  .usernav
+    flex-direction: column
+
+  .usernav li:not(:first-child)
+    display: flex
+    flex-wrap: wrap
+    margin-top: 5px
+    font-size: 20px
+    padding: 5px
+
+  .usernav li:last-child input
+    margin-bottom: 5px

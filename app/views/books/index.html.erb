@@ -2,7 +2,7 @@
 <div class="row">
 <% @books.each do |bk| %>
 
-  <div class="col-sm-2">
+  <div class="col-sm-2 text-center">
     <%= link_to bk.title, book_madlibs_path(bk.id) %>
   </div>
 
