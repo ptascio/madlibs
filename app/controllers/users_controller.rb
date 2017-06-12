@@ -23,6 +23,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if current_user.is_password?(params[:user][:password])
+      current_user.change_username(params[:user][:username])
+      render 'show'
+    end
+  end
+
   def user_params
     params.require(:user).permit(:username, :password)
   end

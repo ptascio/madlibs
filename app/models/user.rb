@@ -44,8 +44,8 @@ class User < ActiveRecord::Base
   end
 
   def change_username(new_username)
-    current_user.username = new_username
-    current_user.save!
+    self.username = new_username
+    self.save!
   end
 
   private
