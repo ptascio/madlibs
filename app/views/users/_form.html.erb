@@ -38,6 +38,16 @@
      id="user_password" class="log-in-inputs"
      >
   <br>
+  <% if method == "post"%>
+  <label for="user_password" class="log-in-label">Confirm Password</label><br>
+  <input
+     id="user_password"
+     name="confirm_password"
+     type="password"
+     id="user_password" class="log-in-inputs"
+     >
+  <br>
+  <% end %>
 
   <input type="submit" class="log-in-inputs log-in-button" value="<%= message %>"><br>
 

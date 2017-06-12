@@ -2,13 +2,16 @@ class UsersController < ApplicationController
   before_action :require_current_user!, except: [:create, :new]
 
   def create
-    @user = User.new(user_params)
+    if (params[:confirm_password] == params[:user][:password])
+      @user = User.new(user_params)
+    end
 
     if @user.save
       login!(@user)
       render "show"
     else
-      render json: @user.errors.full_messages
+      redirect_to new_user_path, :flash => { :error => "*Ensure all fields are populated
+        and that passwords match." }
     end
   end
 
