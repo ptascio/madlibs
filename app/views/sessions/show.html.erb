@@ -4,7 +4,9 @@
   <div class="row" id="login-row">
     <div class="col-sm-12 text-center">
       <form action="/session" method="POST" class="log-in-form">
-        <p class="form-errors"><%= flash[:error] %></p>
+        <% if flash[:error]%>
+          <p class="form-errors"><%= flash[:error] %></p>
+        <% end %>
         <input
           type="hidden"
           name="authenticity_token"
