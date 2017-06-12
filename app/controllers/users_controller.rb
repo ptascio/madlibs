@@ -26,8 +26,14 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if current_user.is_password?(params[:user][:password])
-      current_user.change_username(params[:user][:username])
-      render 'show'
+      if params[:user][:username].length > 0
+        current_user.change_username(params[:user][:username])
+        render 'show'
+      else
+        redirect_to user_path(current_user), :flash => { :error => "Username field must be filled in." }
+      end
+    else
+      redirect_to user_path(current_user), :flash => { :error => "We could not verify access to this account." }
     end
   end
 

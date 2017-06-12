@@ -1,12 +1,17 @@
 <% action = (user.persisted? ? user_url(user) : users_url) %>
 <% method = (user.persisted? ? "patch" : "post") %>
-<% message = (user.persisted? ? "Update User" : "Sign Up") %>
+<% message = (user.persisted? ? "Update Account" : "Sign Up") %>
 <% updatemessage = (user.persisted? ? "Edit Account" : "Sign Up") %>
+<% updateusername = (user.persisted? ? "Edit Username" : "Username") %>
+
 <h1 id="h1-overrides" class="home-page"><%= updatemessage %></h1>
 <div class="container-fluid">
   <div class="row" id="login-row">
     <div class="col-sm-12 text-center">
 <form action="<%= action %>" method="post" class="log-in-form">
+  <% if flash[:error]%>
+    <p class="form-errors"><%= flash[:error] %></p>
+  <% end %>
   <input
      name="_method"
      type="hidden"
@@ -16,7 +21,7 @@
      type="hidden"
      value="<%= form_authenticity_token %>">
 
-  <label for="user_username" class="log-in-label">Username</label><br>
+  <label for="user_username" class="log-in-label"><%= updateusername %></label><br>
   <input
      id="user_username"
      name="user[username]"
