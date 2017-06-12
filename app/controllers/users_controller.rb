@@ -4,14 +4,15 @@ class UsersController < ApplicationController
   def create
     if (params[:confirm_password] == params[:user][:password])
       @user = User.new(user_params)
+    else
+      redirect_to new_user_path, :flash => { :error => "Ensure that passwords match." }
     end
-
+   debugger
     if @user.save
       login!(@user)
       render "show"
     else
-      redirect_to new_user_path, :flash => { :error => "*Ensure all fields are populated
-        and that passwords match." }
+      redirect_to new_user_path, :flash => { :error => "Ensure all fields are populated." }
     end
   end
 
