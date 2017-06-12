@@ -43,6 +43,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def change_username(new_username)
+    current_user.username = new_username
+    current_user.save!
+  end
+
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
