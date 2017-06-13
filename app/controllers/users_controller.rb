@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_path, :flash => { :error => "Ensure that passwords match." }
     end
-   debugger
     if @user.save
       login!(@user)
       render "show"
