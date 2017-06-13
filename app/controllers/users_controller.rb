@@ -42,6 +42,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    
+  end
+
   def user_params
     params.require(:user).permit(:username, :password)
   end

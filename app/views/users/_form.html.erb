@@ -38,6 +38,7 @@
      id="user_password" class="log-in-inputs"
      >
   <br>
+
   <% if method == "post"%>
   <label for="user_password" class="log-in-label">Confirm Password</label><br>
   <input
@@ -61,6 +62,17 @@
           </a>
         <% end %>
       </form>
+
     </div>
+    <form action="<%= user_url(current_user.id) %>" method="POST" class="log-in-form">
+      <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+      <input
+         name="_method"
+         type="hidden"
+         value="delete">
+      <input type="submit" class="log-in-inputs log-in-button delete-account" value="Delete Account"><br>
+    </form>
   </div>
 </div>
