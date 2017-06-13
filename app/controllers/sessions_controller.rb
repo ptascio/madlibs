@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
 
   def create
-
+    if (params[:user][:username].length < 1 || params[:user][:password].length < 1)
+      redirect_to session_path, :flash => { :error => "Make sure both Username and Password are filled in." }
+      return
+    end
     if request.env['omniauth.auth']
       user = User.create_with_omniauth(request.env['omniauth.auth'])
       login!(user)
@@ -14,7 +17,7 @@ class SessionsController < ApplicationController
 
       if user.nil?
         # render json: "Incorrect Credentials"
-        redirect_to session_path, :flash => { :error => "Make sure both Username and Password are filled in." }
+        redirect_to session_path, :flash => { :error => "Sorry, we could not find this account." }
       else
         login!(user)
         redirect_to user_path(user.id)
