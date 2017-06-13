@@ -11,10 +11,10 @@
   <body>
     <%= render "searchoverlay" %>
     <%= render 'navbar' %>
-
-
     <% if !current_user.nil? %>
       <%= render 'usernavbar' %>
+    <% else %>
+      <%= render 'signupnav' %>
     <% end %>
     <%= yield %>
   </body>
