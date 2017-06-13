@@ -4,14 +4,16 @@ class UsersController < ApplicationController
   def create
     if (params[:confirm_password] == params[:user][:password])
       @user = User.new(user_params)
+      if @user.save
+        login!(@user)
+        render "show"
+      elsif params[:user][:password].length < 6
+        redirect_to new_user_path, :flash => { :error => "Password must contain at least 6 characters." }
+      else
+        redirect_to new_user_path, :flash => { :error => "Ensure all fields are populated." }
+      end
     else
       redirect_to new_user_path, :flash => { :error => "Ensure that passwords match." }
-    end
-    if @user.save
-      login!(@user)
-      render "show"
-    else
-      redirect_to new_user_path, :flash => { :error => "Ensure all fields are populated." }
     end
   end
 
