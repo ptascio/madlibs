@@ -64,6 +64,7 @@
       </form>
 
     </div>
+    <% if current_user %>
     <form action="<%= user_url(current_user.id) %>" method="POST" class="log-in-form">
       <input type="hidden"
            name="authenticity_token"
@@ -74,5 +75,6 @@
          value="delete">
       <input type="submit" class="log-in-inputs log-in-button delete-account" value="Delete Account"><br>
     </form>
+    <% end %>
   </div>
 </div>
