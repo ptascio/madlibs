@@ -61,21 +61,32 @@
           </button>
           </a>
         <% end %>
+        <% if current_user %>
+          <!-- <form action="<%= user_url(current_user.id) %>" method="POST" class="log-in-form">
+            <input type="hidden"
+                 name="authenticity_token"
+                 value="<%= form_authenticity_token %>">
+            <input
+               name="_method"
+               type="hidden"
+               value="delete">
+            <input type="submit" class="log-in-inputs log-in-button delete-account" value="Delete Account"><br>
+          </form> -->
+
+            <%= link_to user_path(current_user.id),
+            :action => :destroy,
+            :method => :delete,
+            data: { confirm: "Are you sure?" } do %>
+            <div class="log-in-inputs log-in-button delete-account">
+              Delete Account
+            </div>
+            <% end %>
+
+
+        <% end %>
       </form>
 
     </div>
-    <% if current_user %>
-      <!-- <form action="<%= user_url(current_user.id) %>" method="POST" class="log-in-form">
-        <input type="hidden"
-             name="authenticity_token"
-             value="<%= form_authenticity_token %>">
-        <input
-           name="_method"
-           type="hidden"
-           value="delete">
-        <input type="submit" class="log-in-inputs log-in-button delete-account" value="Delete Account"><br>
-      </form> -->
-      <%= link_to "Delete Account", user_path(current_user.id), :action => :destroy, :method => :delete, data: { confirm: "Are you sure?" } %>
-    <% end %>
+
   </div>
 </div>
