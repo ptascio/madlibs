@@ -43,7 +43,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    
+    @user = User.find(params[:id])
+    debugger
   end
 
   def user_params
