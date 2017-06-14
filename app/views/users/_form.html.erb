@@ -8,7 +8,7 @@
 <div class="container-fluid">
   <div class="row" id="login-row">
     <div class="col-sm-12 text-center">
-<form action="<%= action %>" method="post" class="log-in-form">
+<form action="<%= action %>" method="post" class="log-in-form" autocomplete="off">
   <% if flash[:error]%>
     <p class="form-errors"><%= flash[:error] %></p>
   <% end %>
@@ -27,6 +27,7 @@
      name="user[username]"
      type="text"
      id="user_username" class="log-in-inputs"
+     autocomplete="off"
      >
   <br>
 
@@ -36,6 +37,7 @@
      name="user[password]"
      type="password"
      id="user_password" class="log-in-inputs"
+     autocomplete="off"
      >
   <br>
 
@@ -46,6 +48,7 @@
      name="confirm_password"
      type="password"
      id="user_password" class="log-in-inputs"
+     autocomplete="off"
      >
   <br>
   <% end %>

@@ -48,7 +48,8 @@ class UsersController < ApplicationController
     @books.each do |book|
       book.destroy
     end
-    debugger
+    @user.destroy
+    redirect_to root_path
   end
 
   def user_params
