@@ -48,6 +48,11 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def self.destroy_user_books(user)
+    @user_books = Book.where(:user_id => user.id)
+    @user_books
+  end
+
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token

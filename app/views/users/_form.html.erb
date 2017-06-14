@@ -76,7 +76,8 @@
             <%= link_to user_path(current_user.id),
             :action => :destroy,
             :method => :delete,
-            data: { confirm: "Are you sure?" } do %>
+            :class => "remove-underline",
+            data: { confirm: "Are you sure you want to delete your account?" } do %>
             <div class="log-in-inputs log-in-button delete-account">
               Delete Account
             </div>

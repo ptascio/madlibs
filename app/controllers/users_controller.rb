@@ -44,6 +44,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    @books = User.destroy_user_books(@user)
+    @books.each do |book|
+      book.destroy
+    end
     debugger
   end
 
