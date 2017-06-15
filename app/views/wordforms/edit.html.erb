@@ -6,10 +6,20 @@
 <% end %>
 <p>Hit Submit to move forward or... </p>
 <p>Edit your submission</p>
-<%= form_for @wordform, url: wordform_path(@wordform.id) do |f| %>
+<!-- <%= form_for @wordform, url: wordform_path(@wordform.id) do |f| %>
 <%= f.text_area :misswords, size: "40x12", :misswords => @wordform.misswords %>
 <%= f.submit "Edit" %>
-<% end %>
+<% end %> -->
+
+<%= form_for @wordform, url: {action: "update"} do |f| %>
+  <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
+    <label><%= word %></label>
+    <%= text_field_tag "misswords[]", params[:misswords][idx],
+    :onclick => '{$(this).val("");};'
+    %><br>
+  <% end %>
+  <%= f.submit "Submit" %>
+  <% end %>
 
 <!-- <%= form_for @wordform, url: {action: "update"} do |f| %>
 <%= f.text_area :misswords, size: "40x12" %>
