@@ -4,11 +4,6 @@
 
 <p>This story needs a total of <%= @wordform.count %> words.</p>
 
-<p>The words this story needs (in order) are:</p>
-
-<% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
-  <p><%= word %></p>
-<% end %>
 <br />
 
 <% if @wordform.misswords.nil? %>
@@ -18,15 +13,21 @@
     <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
       <!-- <%= f.text_field :misswords,  placeholder: word%> -->
       <!-- <input name="wordform[misswords]"> -->
-      <%= text_field_tag "misswords[]", word,
-      :onclick => '{$(this).val("");};'
-      %>
+      <label><%= word %></label>
+      <%= text_field_tag "misswords[]"
+      %><br>
     <% end %>
     <%= f.submit "Submit" %>
   <% end %>
   <% else %>
   <%= form_for @wordform, url: {action: "update"} do |f| %>
-    <%= f.text_area :misswords, size: "40x12", :misswords => params[:misswords] %>
+    <!-- <%= f.text_area :misswords, size: "40x12", :misswords => params[:misswords] %> -->
+    <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
+      <label><%= word %></label>
+      <%= text_field_tag "misswords[]", params[:misswords][idx],
+      :onclick => '{$(this).val("");};'
+      %><br>
+    <% end %>
     <%= f.submit "Submit" %>
   <% end %>
 <% end %>
