@@ -30,7 +30,7 @@
               <%= text_field_tag "misswords[]"
               %><br>
           <% end %>
-          <%= f.submit "Submit" %>
+          <%= f.submit "Submit", :class => "submit-button" %>
         <% end %>
         <% else %>
         <%= form_for @wordform, url: {action: "update"} do |f| %>
