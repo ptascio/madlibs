@@ -7,6 +7,7 @@ class MadlibsController < ApplicationController
   end
 
   def show
+    debugger
     @madlib = Madlib.find(params[:id])
     render 'show'
   end
@@ -38,7 +39,6 @@ class MadlibsController < ApplicationController
     @madlib = Madlib.find(params[:book_id])
     story = @madlib.array_story
     @madlib.story = @madlib.populate_story(story);
-
     render 'show'
   end
 
