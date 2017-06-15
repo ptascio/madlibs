@@ -32,7 +32,7 @@ class WordformsController < ApplicationController
 
   def update
     @wordform = Wordform.find(params[:id])
-    user_submission = params[:wordform][:misswords]
+    user_submission = params[:misswords]
     if @wordform.check_if_empty(user_submission)
       render "show"
     elsif @wordform.check_over_under(user_submission)

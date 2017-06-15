@@ -8,7 +8,7 @@ class Wordform < ActiveRecord::Base
   end
 
   def check_over_under(words)
-    if (words.split.length < self.count) || (words.split.length > self.count)
+    if (words.length < self.count) || (words.length > self.count)
       self.errors.add(:base, "You need to enter #{self.count} words")
     end
   end

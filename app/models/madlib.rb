@@ -8,9 +8,9 @@ class Madlib < ActiveRecord::Base
     story.each_with_index do |word,idx|
       if word[0] == "_"
         if punctuation.include?(word[-1])
-          story[idx] = misswords_array.shift + word[-1]
+          story[idx] = misswords_array.shift.gsub(/[\[\]\"]/, "") + word[-1]
         else
-          story[idx] = misswords_array.shift
+          story[idx] = misswords_array.shift.gsub(/[\[\]\"]/, "")
         end
       end
     end
