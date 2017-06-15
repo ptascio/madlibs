@@ -1,6 +1,8 @@
+<span>
 <h1>
   <%= @wordform.madlib.title %>
 </h1>
+</span>
 
 <p>This story needs a total of <%= @wordform.count %> words.</p>
 
@@ -40,4 +42,4 @@
     <% end %>
 <% end %>
 
-<%= link_to "Titles", books_path %>
+<%= link_to "More " + @madlib.book.title + " Stories", book_madlibs_path(@madlib.book_id) %>
