@@ -3,6 +3,7 @@ class Madlib < ActiveRecord::Base
   has_one :wordform
 
   def populate_story(story)
+    debugger
     misswords_array = self.split_up_misswords
     punctuation = [".", "?", "!"]
     story.each_with_index do |word,idx|

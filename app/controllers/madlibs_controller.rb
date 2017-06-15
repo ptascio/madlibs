@@ -36,7 +36,11 @@ class MadlibsController < ApplicationController
   end
 
   def update
-    @madlib = Madlib.find(params[:book_id])
+    if params[:id]
+      @madlib = Madlib.find(params[:id])
+    else
+      @madlib = Madlib.find(params[:book_id])
+    end
     story = @madlib.array_story
     @madlib.story = @madlib.populate_story(story);
     render 'show'

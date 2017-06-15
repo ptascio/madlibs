@@ -6,7 +6,7 @@
       <% if ml.wordform.misswords.nil? %>
         <%= link_to ml.title, wordform_path(ml.wordform.id) %>
       <% else %>
-        <%= link_to ml.title, book_madlib_path(ml.id) %>
+        <%= link_to ml.title, book_madlib_path(@book, ml.id), :method => :put %>
       <% end %>
     </div>
   <% end %>
