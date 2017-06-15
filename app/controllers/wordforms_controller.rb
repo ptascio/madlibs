@@ -32,7 +32,6 @@ class WordformsController < ApplicationController
 
   def update
     @wordform = Wordform.find(params[:id])
-      debugger
     user_submission = params[:misswords]
     if @wordform.check_if_empty(user_submission)
       render "show"
@@ -40,7 +39,7 @@ class WordformsController < ApplicationController
       @wordform.misswords = user_submission
       render "show"
     else
-      @wordform.misswords = user_submission
+      @wordform.misswords = user_submission.join(", ")
       @wordform.save!
       @madlib = Madlib.find_by_id(@wordform.madlib_id)
       @madlib.wordform = @wordform

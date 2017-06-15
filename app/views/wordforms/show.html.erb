@@ -8,11 +8,7 @@
 
 <% if @wordform.misswords.nil? %>
   <%= form_for @wordform, url: {action: "update"} do |f| %>
-    <!-- <%= f.text_area :misswords, size: "40x12",
-    placeholder: "Enter, words, with, a, comma, after, each, one" %> -->
     <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
-      <!-- <%= f.text_field :misswords,  placeholder: word%> -->
-      <!-- <input name="wordform[misswords]"> -->
       <label><%= word %></label>
       <%= text_field_tag "misswords[]"
       %><br>
@@ -21,7 +17,6 @@
   <% end %>
   <% else %>
   <%= form_for @wordform, url: {action: "update"} do |f| %>
-    <!-- <%= f.text_area :misswords, size: "40x12", :misswords => params[:misswords] %> -->
     <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
       <label><%= word %></label>
       <%= text_field_tag "misswords[]", params[:misswords][idx],
