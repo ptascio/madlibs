@@ -32,18 +32,22 @@
       <% if @wordform.misswords.nil? %>
         <%= form_for @wordform, url: {action: "update"}, :html => {:class => "submit-words"} do |f| %>
           <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
-              <label><%= word %></label><br>
-              <%= text_field_tag "misswords[]"%><br>
+          <div class="form-flex-container">
+            <label><%= word %></label>
+            <%= text_field_tag "misswords[]"%><br>
+          </div>
           <% end %>
           <%= f.submit "Submit", :class => "submit-button" %>
         <% end %>
         <% else %>
         <%= form_for @wordform, url: {action: "update"}, :html => {:class => "submit-words"} do |f| %>
           <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
-            <label><%= word %></label><br>
-            <%= text_field_tag "misswords[]", params[:misswords][idx],
-            :onclick => '{$(this).val("");};'
-            %><br>
+            <div class="form-flex-container">
+              <label><%= word %></label>
+              <%= text_field_tag "misswords[]", params[:misswords][idx],
+              :onclick => '{$(this).val("");};'
+              %><br>
+            </div>
           <% end %>
           <%= f.submit "Submit", :class => "submit-button" %>
         <% end %>
