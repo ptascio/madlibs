@@ -40,7 +40,6 @@ class MadlibsController < ApplicationController
     #   @madlib = Madlib.find(params[:id])
     # else
       @madlib = Madlib.find(params[:book_id])
-      debugger
     # end
     story = @madlib.array_story
     @madlib.story = @madlib.populate_story(story);
