@@ -44,7 +44,13 @@
           <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
             <div class="form-flex-container">
               <label><%= word %></label>
-              <%= text_field_tag "misswords[]", params[:misswords][idx],
+              <% if params[:misswords] %>
+              <% fillinwords = params[:misswords] %>
+              <% else %>
+              <% fillinwords = @wordform.misswords.split(", ") %>
+              <% end %>
+              
+              <%= text_field_tag "misswords[]", fillinwords[idx],
               :onclick => '{$(this).val("");};'
               %><br>
             </div>

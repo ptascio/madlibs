@@ -52,7 +52,7 @@ class MadlibsController < ApplicationController
     @madlib.misswords = nil
     @madlib.save!
     # render "show"
-    redirect_to wordform_path
+    redirect_to wordform_path(@madlib.wordform.id)
   end
 
   def destroy
