@@ -1,5 +1,6 @@
 
 <h1><%= @madlib.title %></h1>
 <p><%= simple_format(@madlib.story) %></p>
+<% debugger %>
 <p><%= link_to "Reset", edit_book_madlib_path(@madlib.id) %></p>
 <p><%= link_to "Titles", books_path %></p>

@@ -18,6 +18,7 @@ class WordformsController < ApplicationController
   end
 
   def show
+    debugger
     @wordform = Wordform.find(params[:id])
     @madlib = Madlib.find_by_id(@wordform.madlib_id)
     @wordform.count = @madlib.count_missing_words
