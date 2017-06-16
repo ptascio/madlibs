@@ -9,11 +9,10 @@
 
     <div class="row text-center">
     <div class="col-sm-12">
-      <p>from the</p>
-    <h3>
+      <p>from the book:</p>
+    <h2>
       <%= @madlib.book.title %>
-    </h3>
-    <p>book</p>
+    </h2>
   </div>
   </div>
 </div>
@@ -21,6 +20,19 @@
   <div class="row">
     <div class="col-sm-12 text-center">
       <p>This story needs a total of <%= @wordform.count %> words.</p>
+      <%= form_for(@wordform) do |f| %>
+        <% if @wordform.errors.any? %>
+          <div>
+            <ul>
+            <% @wordform.errors.full_messages.each do |msg| %>
+            <div class="col-sm-12 text-center">
+              <li class="word-errors">*<%= msg %></li>
+            </div>
+            <% end %>
+            </ul>
+          </div>
+          <% end %>
+      <% end %>
       <br />
 
       <% if @wordform.misswords.nil? %>
@@ -33,29 +45,19 @@
           <%= f.submit "Submit", :class => "submit-button" %>
         <% end %>
         <% else %>
-        <%= form_for @wordform, url: {action: "update"} do |f| %>
+        <%= form_for @wordform, url: {action: "update"}, :html => {:class => "submit-words"} do |f| %>
           <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
-            <label><%= word %></label>
+            <label><%= word %></label><br>
             <%= text_field_tag "misswords[]", params[:misswords][idx],
             :onclick => '{$(this).val("");};'
             %><br>
           <% end %>
-          <%= f.submit "Submit" %>
+          <%= f.submit "Submit", :class => "submit-button" %>
         <% end %>
       <% end %>
 
 
-      <%= form_for(@wordform) do |f| %>
-        <% if @wordform.errors.any? %>
-          <div>
-            <ul>
-            <% @wordform.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
-          <% end %>
-      <% end %>
+
 
       <%= link_to "More " + @madlib.book.title + " Stories", book_madlibs_path(@madlib.book_id) %>
     </div>
