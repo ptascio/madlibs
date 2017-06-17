@@ -18,22 +18,29 @@
 </div>
 
 
-
-
-<p><%= flash[:error] %></p>
-<form class="" action="/books/<%= @book.id %>/madlibs" method="post">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
-     <input type="hidden" name="madlib[book_id]" value="<%= @book.id %>">
-  <label for="title">Title:</label>
-  <input type="text" name="madlib[title]" value=""><br />
-  <label for="">Story:</label><br />
-  <textarea type="text" name="madlib[story]" value="" rows="12" cols="40"></textarea>
-  <input type="submit" name="" value="Create Madlib">
-</form>
-
-<p>Remember, you need to leave out some words.</p>
-<p>Simply input the words you want to leave out like this:</p>
-<p>_adj_ for adjective or _noun_ for noun.
+<div class="text-center madlibs-form">
+<div class="row">
+  <p><%= flash[:error] %></p>
+  <div class="col-sm-4">
+    <p>Remember, you need to leave out some words.</p>
+    <p>Simply input the words you want to leave out like this:</p>
+    <p>_adj_ for adjective or _noun_ for noun.
+  </div>
+  <div class="col-sm-8">
+    <div class="madlibs-form-wrapper">
+      <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+           <input type="hidden" name="madlib[book_id]" value="<%= @book.id %>">
+        <label for="title">Title:</label><br>
+        <input type="text" name="madlib[title]" value=""><br />
+        <label for="">Story:</label><br />
+        <textarea type="text" name="madlib[story]" value="" rows="12" cols="40"></textarea><br>
+        <input type="submit" name="" value="Create Madlib">
+      </form>
+    </div>
+  </div>
+</div>
+</div>
