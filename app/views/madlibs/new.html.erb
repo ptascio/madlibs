@@ -20,18 +20,24 @@
 
 <div class="text-center madlibs-form">
 <div class="row">
-  <p><%= flash[:error] %></p>
+  <% if flash[:error]%>
+    <p class="form-errors"><%= flash[:error] %></p>
+  <% end %>
   <div class="col-sm-4">
-    <p>Remember, you need to leave out some words.</p>
-    <p>Simply input the words you want to leave out like this:</p>
-    <p>Adjective: _adj_</p>
-    <p>Noun: _noun_</p>
-    <p>Verb: _verb_</p>
-    <p>Example:</p>
-    <div class="example">
-      <p>Magda likes to _verb_.</p>
-      <p>She is very _adj_!</p>
-      <p>Does she know where the _noun_ is?</p>
+    <div class="instructions-wrapper">
+      <p class="first-child">Remember to leave out some words!</p>
+      <p>Simply input the words you want to leave out like this:</p>
+      <div class="example">
+        <p>Adjective: _adj_</p>
+        <p>Noun: _noun_</p>
+        <p>Verb: _verb_</p>
+      </div>
+      <p>Example:</p>
+      <div class="example">
+        <p>Magda likes to _verb_.</p>
+        <p>She is very _adj_!</p>
+        <p>Does she know where the _noun_ is?</p>
+      </div>
     </div>
   </div>
   <div class="col-sm-8">
