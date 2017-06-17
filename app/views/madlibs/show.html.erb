@@ -2,4 +2,4 @@
 <h1><%= @madlib.title %></h1>
 <p><%= simple_format(@madlib.story) %></p>
 <p><%= link_to "Reset", edit_book_madlib_path(@madlib.id, @madlib.wordform) %></p>
-<p><%= link_to "Titles", books_path %></p>
+<p><%= link_to "Book", book_madlibs_path(@madlib.book_id) %></p>
