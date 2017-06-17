@@ -1,5 +1,23 @@
-<h1>Create your own madlibs!</h1>
-<p>The book you are working on is called <%= @book.title %></p>
+
+<div class="text-center madlibs-header">
+  <div class="row">
+    <div class="col-sm-12 h3-fun">
+      <h3 class="">Create your own Madlibs!</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p>for the book:</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>"<%= @book.title %>"</h1>
+    </div>
+  </div>
+</div>
+
+
 
 
 <p><%= flash[:error] %></p>
@@ -18,4 +36,4 @@
 
 <p>Remember, you need to leave out some words.</p>
 <p>Simply input the words you want to leave out like this:</p>
-<p>__adj__ for adjective or __noun__ for noun.
+<p>_adj_ for adjective or _noun_ for noun.
