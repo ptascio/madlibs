@@ -7,7 +7,12 @@ class MadlibsController < ApplicationController
   end
 
   def show
+
     @madlib = Madlib.find(params[:id])
+    if (!@madlib.wordform.misswords.nil?)
+      story = @madlib.array_story
+      @madlib.story = @madlib.populate_story(story)
+    end
     render 'show'
   end
 
