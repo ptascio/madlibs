@@ -9,11 +9,16 @@
   margin: 0 auto
   margin-top: -15px
   background: #DDA0DD
+  border-top: 1px solid #F8F8F8
+  border-bottom: 1px solid #F8F8F8
 
-.madlibs-header h3,
+
 .madlibs-header h1,
 .madlibs-header p
   margin-top: 6px
+
+.madlibs-header h3
+  margin-top: 10px
 
 .madlibs-header p
   font-size: 20px
@@ -36,12 +41,17 @@
 .madlibs-form textarea
   padding: 5px
   outline: none
+  border: 1px solid #D8BFD8
+  border-radius: 3px
+
+.madlibs-form textarea
+  resize: none
 
 .example
   font-family: "Coustard", serif
 
 .madlibs-form-wrapper
-  margin: 5px 0 5px -20px
+  margin: 5px -10px 5px -10px
   font-family: "Coustard", serif
   background: #E6E6FA
   border: 2px solid #DDA0DD
@@ -66,13 +76,10 @@
     width: 100%
 
 @media only screen and (max-width: 766px)
-  .madlibs-form-wrapper
-    text-align: center
-    display: block
-    margin: 0 auto
-
+  .madlibs-form-wrapper,
   .instructions-wrapper
-    margin-bottom: 5px
+    margin: 10px
+
 
   textarea
     width: 70%
