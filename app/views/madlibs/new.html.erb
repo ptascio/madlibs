@@ -16,8 +16,8 @@
   </div>
 </div>
 
-<div class="text-center madlibs-form big-background">
-<div class="row">
+<div class="text-center madlibs-form">
+<div class="row big-background">
   <% if flash[:error]%>
     <p class="form-errors"><%= flash[:error] %></p>
   <% end %>
@@ -30,15 +30,9 @@
         <p>Noun: _noun_</p>
         <p>Verb: _verb_</p>
       </div>
-      <p>Example:</p>
-      <div class="example">
-        <p>Magda likes to _verb_.</p>
-        <p>She is very _adj_!</p>
-        <p>Does she know where the _noun_ is?</p>
-      </div>
     </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="madlibs-form-wrapper">
       <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
         <input
@@ -49,9 +43,19 @@
         <label for="title">Title:</label><br>
         <input type="text" name="madlib[title]" value=""><br />
         <label for="">Story:</label><br />
-        <textarea type="text" name="madlib[story]" value="" rows="12" cols="40"></textarea><br>
+        <textarea type="text" name="madlib[story]" value="" rows="12" cols="50"></textarea><br>
         <input type="submit" name="" value="Create Madlib">
       </form>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="instructions-wrapper wrapper-adjustments">
+      <p>Example Story:</p>
+      <div class="example">
+        <p>Magda likes to _verb_.</p>
+        <p>She is very _adj_!</p>
+        <p>Does she know where the _noun_ is?</p>
+      </div>
     </div>
   </div>
 </div>
