@@ -21,7 +21,7 @@
   <% if flash[:error]%>
     <p class="form-errors"><%= flash[:error] %></p>
   <% end %>
-  <div class="col-sm-4">
+  <div class="col-sm-4 col-md-4">
     <div class="instructions-wrapper">
       <p class="first-child">Remember to leave out some words!</p>
       <p>Simply input the words you want to leave out like this:</p>
@@ -32,7 +32,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 col-md-5">
     <div class="madlibs-form-wrapper">
       <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
         <input
@@ -48,7 +48,7 @@
       </form>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-4 col-md-3">
     <div class="instructions-wrapper wrapper-adjustments">
       <p>Example Story:</p>
       <div class="example">
