@@ -1,16 +1,18 @@
 <h1 id="h1-overrides" class="home-page"><%= @book.title %></h1>
-
-<div class="row">
-  <% @madlibs.each do |ml| %>
-    <div class="col-sm-2">
-      <% if ml.wordform.misswords.nil? %>
-        <%= link_to ml.title, wordform_path(ml.wordform.id) %>
-      <% else %>
-        <%= link_to ml.title, book_madlib_path(@book, ml.id) %>
-      <% end %>
-    </div>
-  <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <% @madlibs.each do |ml| %>
+      <div class="col-sm-2">
+        <% if ml.wordform.misswords.nil? %>
+          <%= link_to ml.title, wordform_path(ml.wordform.id) %>
+        <% else %>
+          <%= link_to ml.title, book_madlib_path(@book, ml.id) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
+
 
 <% if !current_user.nil? %>
   <% if current_user[:id] == @book.user_id %>
