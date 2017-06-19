@@ -21,7 +21,7 @@
       <p>No, I need to change some of them.</p>
     </div>
   </div>
-  <div class="row word-submit-form">
+  <div class="row word-submit-form word-submit-form-override">
     <div class="col-sm-12">
       <%= form_for @wordform, url: {action: "update"} do |f| %>
         <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
@@ -31,10 +31,8 @@
           :onclick => '{$(this).val("");};'
           %><br>
         </div>
-
-
         <% end %>
-        <%= f.submit "Use these words instead.", :class => "submit-button re-edit-wordform-submit" %>
+        <%= f.submit "Use these words instead.", :class => "submit-button edit-wordform-submit" %>
       <% end %>
     </div>
   </div>
