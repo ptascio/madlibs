@@ -1,17 +1,35 @@
-<p>You entered:</p>
+<div class="container-fluid text-center">
+  <div class="row">
+    <p class="col-sm-12">You entered:
+    <%= @wordform.misswords %></p>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p>Would you like to use these words?</p>
+      <%= form_for @madlib, url: book_madlib_path(@wordform.madlib_id) do |f| %>
+      <%= f.submit "Yes, show me the story!" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= @wordform.misswords %>
-<%= form_for @madlib, url: book_madlib_path(@wordform.madlib_id) do |f| %>
-<%= f.submit "Submit" %>
-<% end %>
-<p>Hit Submit to move forward or... </p>
-<p>Edit your submission</p>
-<%= form_for @wordform, url: {action: "update"} do |f| %>
-  <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
-    <label><%= word %></label>
-    <%= text_field_tag "misswords[]", params[:misswords][idx],
-    :onclick => '{$(this).val("");};'
-    %><br>
-  <% end %>
-  <%= f.submit "Submit" %>
-  <% end %>
+<div class="container-fluid text-center">
+  <div class="row">
+    <div class="col-sm-12">
+      <p>No, I need to change some of them.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= form_for @wordform, url: {action: "update"} do |f| %>
+        <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
+          <label><%= word %></label>
+          <%= text_field_tag "misswords[]", params[:misswords][idx],
+          :onclick => '{$(this).val("");};'
+          %><br>
+        <% end %>
+        <%= f.submit "Use these words instead." %>
+      <% end %>
+    </div>
+  </div>
+</div>
