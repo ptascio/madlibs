@@ -1,4 +1,6 @@
-<div class="container-fluid text-center">
+<div class="use-these-words">
+
+<div class="container-fluid text-center use-these-words">
   <div class="row">
     <p class="col-sm-12">You entered:
     <%= @wordform.misswords %></p>
@@ -7,29 +9,34 @@
     <div class="col-sm-12">
       <p>Would you like to use these words?</p>
       <%= form_for @madlib, url: book_madlib_path(@wordform.madlib_id) do |f| %>
-      <%= f.submit "Yes, show me the story!" %>
+      <%= f.submit "Yes, show me the story!", :class => "submit-button edit-wordform-submit" %>
       <% end %>
     </div>
   </div>
 </div>
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center change-these-words">
   <div class="row">
     <div class="col-sm-12">
       <p>No, I need to change some of them.</p>
     </div>
   </div>
-  <div class="row">
+  <div class="row word-submit-form">
     <div class="col-sm-12">
       <%= form_for @wordform, url: {action: "update"} do |f| %>
         <% @wordform.words.gsub(/\n/, "").split(", ").each_with_index do |word, idx| %>
+        <div class="form-flex-container">
           <label><%= word %></label>
           <%= text_field_tag "misswords[]", params[:misswords][idx],
           :onclick => '{$(this).val("");};'
           %><br>
+        </div>
+
+
         <% end %>
-        <%= f.submit "Use these words instead." %>
+        <%= f.submit "Use these words instead.", :class => "submit-button re-edit-wordform-submit" %>
       <% end %>
     </div>
   </div>
+</div>
 </div>
