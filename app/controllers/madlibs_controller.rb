@@ -49,8 +49,9 @@ class MadlibsController < ApplicationController
   end
 
   def edit
+    @madlib = Madlib.find(params[:id])
+    @book = Book.find(params[:book_id])
     if params[:reset]
-      @madlib = Madlib.find(params[:id])
       @madlib.wordform.misswords = nil
       @madlib.wordform.save!
       @madlib.misswords = nil
