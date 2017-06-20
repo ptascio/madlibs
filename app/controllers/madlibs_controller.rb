@@ -7,8 +7,8 @@ class MadlibsController < ApplicationController
   end
 
   def show
-
     @madlib = Madlib.find(params[:id])
+
     if (!@madlib.wordform.misswords.nil?)
       story = @madlib.array_story
       @madlib.story = @madlib.populate_story(story)
@@ -22,19 +22,23 @@ class MadlibsController < ApplicationController
   end
 
   def create
-    title = params[:madlib][:title]
-    story = params[:madlib][:story]
-    if title.empty? || story.empty? || title.nil? || story.nil?
-      redirect_to new_book_madlib_path, :flash => { :error => "Make sure both title and story are filled in." }
+    if params[:reset]
+      render 'show'
     else
-      @madlib = Madlib.new(madlib_params)
-      if !@madlib.check_user_story
-        redirect_to new_book_madlib_path, :flash => { :error => "It doesn't look like you left out any words.
-          Make sure each word you want to leave out begins and ends with a _ ." }
+      title = params[:madlib][:title]
+      story = params[:madlib][:story]
+      if title.empty? || story.empty? || title.nil? || story.nil?
+        redirect_to new_book_madlib_path, :flash => { :error => "Make sure both title and story are filled in." }
       else
-        @madlib.book_id = params[:madlib][:book_id]
-        @madlib.save!
-        redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
+        @madlib = Madlib.new(madlib_params)
+        if !@madlib.check_user_story
+          redirect_to new_book_madlib_path, :flash => { :error => "It doesn't look like you left out any words.
+            Make sure each word you want to leave out begins and ends with a _ ." }
+        else
+          @madlib.book_id = params[:madlib][:book_id]
+          @madlib.save!
+          redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
+        end
       end
     end
   end
@@ -49,6 +53,7 @@ class MadlibsController < ApplicationController
   end
 
   def edit
+    debugger
     @madlib = Madlib.find(params[:id])
     @book = Book.find(params[:book_id])
     if params[:reset]

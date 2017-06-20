@@ -1,4 +1,5 @@
 <div class="text-center madlibs-form container-fluid">
+
   <div class="col-sm-4 col-md-6">
     <div class="madlibs-form-wrapper">
       <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
@@ -6,7 +7,8 @@
            name="authenticity_token"
            type="hidden"
            value="<%= form_authenticity_token %>">
-           <input type="hidden" name="madlib[book_id]" value="<%= @book.id %>">
+        <input name="reset" type="hidden" value="true">
+        <input type="hidden" name="madlib[book_id]" value="<%= @book.id %>">
         <label for="title">Title:</label><br>
         <input type="text" name="madlib[title]" value="<%= @madlib.title %>"><br />
         <label for="">Story:</label><br />
@@ -16,3 +18,5 @@
     </div>
   </div>
 </div>
+<!--
+/books/<%= @book.id %>/madlibs/<%= @madlib.id %> -->
