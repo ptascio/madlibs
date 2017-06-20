@@ -23,7 +23,6 @@ class MadlibsController < ApplicationController
 
   def create
     if params[:reset]
-      debugger
       @madlib = Madlib.find(params[:madlib][:id])
       title = params[:madlib][:title]
       story = params[:madlib][:story]
@@ -65,7 +64,6 @@ class MadlibsController < ApplicationController
   end
 
   def edit
-    debugger
     @madlib = Madlib.find(params[:id])
     @book = Book.find(params[:book_id])
     if params[:reset]
@@ -73,7 +71,6 @@ class MadlibsController < ApplicationController
       @madlib.wordform.save!
       @madlib.misswords = nil
       @madlib.save!
-    # render "show"
       redirect_to wordform_path(@madlib.wordform.id)
     else
       render "edit"
@@ -81,6 +78,9 @@ class MadlibsController < ApplicationController
   end
 
   def destroy
+    @madlib = Madlib.find(params[:id])
+    @madlib.destroy
+    redirect_to books_path
   end
 
   def madlib_params
