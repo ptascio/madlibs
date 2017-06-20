@@ -88,18 +88,31 @@
 
 .madlibs-list
   font-family: "IM Fell English", serif
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  flex-direction: row
+  background: #ceb18c
+
+.madlibs-list-wrapper
+  border: 2px solid #896230
+  background: beige
+  margin: 5px 5px
+  border-radius: 3px
+  padding-top: 8px
+
 
 .madlibs-list-title
   font-family: "Lakki Reddy", cursive
   font-size: 16px
   color: #228B22
+  margin-top: 5px
 
 .madlibs-list a:link
   text-decoration: none
 
 .madlibs-list-title:hover
   color: #73be73
-
 
 .madlibs-list-delete
   color: #a02028
@@ -112,6 +125,36 @@
 .madlibs-list-edit:hover
   color: #00bfff
 
+.madlibs-list-title-header
+  padding: 10px
+  background: #38c4bf
+
+.madlibs-list-title-button
+  font-family: "IM Fell English", serif
+  font-size: 15px
+  color: #fff
+  border-radius: 3px
+  padding: 3px 35px
+
+.get-writing
+  background: #914591
+  border: 1px solid #914591
+  margin-left: 40px
+.get-deleting
+  background: #a02028
+  border: 1px solid #a02028
+  margin-right: 40px
+
+.get-writing:hover
+  background: #fff
+  color: #914591
+  border: 1px solid #914591
+
+.get-deleting:hover
+  background: #fff
+  color: #a02028
+  border: 1px solid #a02028
+
 @media only screen and (max-width: 1232px)
   textarea
     width: 100%
@@ -121,6 +164,18 @@
   .instructions-wrapper
     margin: 10px
 
+  .madlibs-list
+    display: block
+
+  .get-writing
+    margin-left: 0
+
+  .get-deleting
+    margin-right: 0
+
+  .madlibs-list-title-button
+    margin: 8px 0
+    padding: 5px 35px
 
   textarea
     width: 70%

@@ -4,15 +4,15 @@
     <h2>There are no stories for this book yet!</h2>
     <p>Write one today!</p>
   <% end %>
-  
+
   <% if !current_user.nil? %>
     <% if current_user[:id] == @book.user_id %>
-    <div class="row text-center">
+    <div class="row text-center madlibs-list-title-header">
       <div class="col-sm-6">
-        <%= button_to "Write a story!", new_book_madlib_path, :method => :get %>
+        <%= button_to "Write a story!", new_book_madlib_path, :method => :get, :class=>"madlibs-list-title-button get-writing" %>
       </div>
       <div class="col-sm-6">
-          <%= button_to "Delete this Book", @book, :method => :get %>
+          <%= button_to "Delete this Book", @book, :method => :get, :class=>"madlibs-list-title-button get-deleting"  %>
       </div>
     </div>
     <% end %>
@@ -20,7 +20,7 @@
 
   <div class="row madlibs-list">
     <% @madlibs.each do |ml| %>
-      <div class="col-sm-3 text-center" style="border:1px solid #000;">
+      <div class="col-sm-3 text-center madlibs-list-wrapper">
         <% if ml.wordform.misswords.nil? %>
           <%= link_to ml.title, wordform_path(ml.wordform.id), {:class=> "madlibs-list-title"} %>
         <% else %>
