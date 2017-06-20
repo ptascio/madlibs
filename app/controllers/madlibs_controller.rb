@@ -23,7 +23,19 @@ class MadlibsController < ApplicationController
 
   def create
     if params[:reset]
-      render 'show'
+      debugger
+      @madlib = Madlib.find(params[:madlib][:id])
+      title = params[:madlib][:title]
+      story = params[:madlib][:story]
+      if title.empty? || story.empty? || title.nil? || story.nil?
+        redirect_to new_book_madlib_path, :flash => { :error => "Make sure both title and story are filled in." }
+      else
+        @madlib.title = title
+        @madlib.story = story
+        @madlib.save!
+        debugger
+        redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
+      end
     else
       title = params[:madlib][:title]
       story = params[:madlib][:story]
