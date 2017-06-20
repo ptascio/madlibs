@@ -1,5 +1,9 @@
 <h1 id="h1-overrides" class="home-page"><%= @book.title %></h1>
 <div class="container-fluid">
+  <% if @madlibs.empty? %>
+    <h2>There are no stories for this book yet!</h2>
+    <p>Write one today!</p>
+  <% end %>
   <div class="row">
     <% @madlibs.each do |ml| %>
       <div class="col-sm-3" style="border:1px solid #000;">

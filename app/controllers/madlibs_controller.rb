@@ -78,9 +78,11 @@ class MadlibsController < ApplicationController
   end
 
   def destroy
+    @book = Book.find(params[:book_id])
+    @madlibs = Madlib.where("book_id" => params[:book_id])
     @madlib = Madlib.find(params[:id])
     @madlib.destroy
-    redirect_to books_path
+    render 'index'
   end
 
   def madlib_params
