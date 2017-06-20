@@ -4,33 +4,42 @@
     <h2>There are no stories for this book yet!</h2>
     <p>Write one today!</p>
   <% end %>
-  <div class="row">
+  
+  <% if !current_user.nil? %>
+    <% if current_user[:id] == @book.user_id %>
+    <div class="row text-center">
+      <div class="col-sm-6">
+        <%= button_to "Write a story!", new_book_madlib_path, :method => :get %>
+      </div>
+      <div class="col-sm-6">
+          <%= button_to "Delete this Book", @book, :method => :get %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+
+  <div class="row madlibs-list">
     <% @madlibs.each do |ml| %>
-      <div class="col-sm-3" style="border:1px solid #000;">
+      <div class="col-sm-3 text-center" style="border:1px solid #000;">
         <% if ml.wordform.misswords.nil? %>
-          <%= link_to ml.title, wordform_path(ml.wordform.id) %>
+          <%= link_to ml.title, wordform_path(ml.wordform.id), {:class=> "madlibs-list-title"} %>
         <% else %>
-          <%= link_to ml.title, book_madlib_path(@book, ml.id) %>
+          <%= link_to ml.title, book_madlib_path(@book, ml.id), {:class=> "madlibs-list-title"} %>
         <% end %>
-        <div class="row">
-          <div class="col-sm-3">
-              <%= link_to "Edit", edit_book_madlib_path(@book, ml.id)%>
+        <div class="row text-center">
+          <div class="col-sm-12">
+              <%= link_to "Edit", edit_book_madlib_path(@book, ml.id), {:class=> "madlibs-list-edit"}%>
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-3">
-              <%= link_to "Delete", book_madlib_path(@book, ml.id), :method => :delete, data: { confirm: "Are you sure? This cannot be undone"} %>
+        <div class="row text-center">
+          <div class="col-sm-12">
+              <%= link_to "Delete", book_madlib_path(@book, ml.id),
+              :method => :delete,
+              data: { confirm: "Are you sure? This cannot be undone"},
+              :class => "madlibs-list-delete" %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
-
-<% if !current_user.nil? %>
-  <% if current_user[:id] == @book.user_id %>
-    <%= button_to "Write a story!", new_book_madlib_path, :method => :get %>
-    <%= button_to "Delete this Book", @book, :method => :get %>
-  <% end %>
-<% end %>

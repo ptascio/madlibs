@@ -1,5 +1,5 @@
 <div class="text-center madlibs-form container-fluid">
-  <%= link_to "Cancel", wordform_path(@madlib.wordform.id) %>
+  <%= link_to "Cancel", book_madlibs_path(@madlib.book_id) %>
   <div class="col-sm-4 col-md-6">
     <div class="madlibs-form-wrapper">
       <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
