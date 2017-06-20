@@ -40,25 +40,26 @@ class MadlibsController < ApplicationController
   end
 
   def update
-
-    # if params[:id]
-    #   @madlib = Madlib.find(params[:id])
-    # else
+    if params[:commit]
       @madlib = Madlib.find(params[:book_id])
-    # end
-    story = @madlib.array_story
-    @madlib.story = @madlib.populate_story(story);
-    render 'show'
+      story = @madlib.array_story
+      @madlib.story = @madlib.populate_story(story);
+      render 'show'
+    end
   end
 
   def edit
-    @madlib = Madlib.find(params[:book_id])
-    @madlib.wordform.misswords = nil
-    @madlib.wordform.save!
-    @madlib.misswords = nil
-    @madlib.save!
+    if params[:reset]
+      @madlib = Madlib.find(params[:id])
+      @madlib.wordform.misswords = nil
+      @madlib.wordform.save!
+      @madlib.misswords = nil
+      @madlib.save!
     # render "show"
-    redirect_to wordform_path(@madlib.wordform.id)
+      redirect_to wordform_path(@madlib.wordform.id)
+    else
+      render "edit"
+    end
   end
 
   def destroy
