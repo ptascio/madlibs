@@ -1,5 +1,13 @@
 
 <h1><%= @madlib.title %></h1>
-<p><%= simple_format(@madlib.story) %></p>
+
+<% @madlib.story.split.each do |word| %>
+  <% if word[0] == "_" %>
+    <span style="color:red;"><%= word %></span>
+  <% else %>
+    <span><%= word %></span>
+  <% end %>
+<% end %>
+
 <p><%= link_to "Reset", edit_book_madlib_path(@madlib.id, @madlib.wordform) %></p>
 <p><%= link_to @madlib.book.title, book_madlibs_path(@madlib.book_id) %></p>

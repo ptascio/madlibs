@@ -14,7 +14,6 @@ class WordformsController < ApplicationController
     @wordform.save!
     @madlib.wordform = @wordform
     @madlib.save!
-    debugger
     redirect_to wordform_path(@wordform.id, @madlib)
   end
 
