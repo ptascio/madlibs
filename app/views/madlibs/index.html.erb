@@ -26,6 +26,7 @@
         <% else %>
           <%= link_to ml.title, book_madlib_path(@book, ml.id), {:class=> "madlibs-list-title"} %>
         <% end %>
+        <% if (current_user && current_user[:id] == @book.user_id) %>
         <div class="row text-center">
           <div class="col-sm-12">
               <%= link_to "Edit", edit_book_madlib_path(@book, ml.id), {:class=> "madlibs-list-edit"}%>
@@ -39,6 +40,7 @@
               :class => "madlibs-list-delete" %>
           </div>
         </div>
+        <% end %>
       </div>
     <% end %>
   </div>
