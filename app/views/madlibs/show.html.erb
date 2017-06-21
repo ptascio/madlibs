@@ -13,9 +13,13 @@
   <div class="row">
     <div class="col-sm-12">
       <% @madlib.story.split.each do |word| %>
-        <% length = word.length%>
+        <% punctuation=[".", "!", "?"] %>
         <% if word[0] == "_" %>
-          <span class="user-word"><%= word[0..length-1] %></span>
+          <% if punctuation.include?(word[-1])%>
+            <span class="user-word"><%= word[0..-2] %></span><span><%= word[-1] %></span>
+          <% else %>
+            <span class="user-word"><%= word[0..-1] %></span>
+            <% end %>
         <% else %>
           <span><%= word %></span>
         <% end %>
@@ -23,13 +27,10 @@
     </div>
   </div>
 </div>
-
-
-
-
 <div class="row">
     <div class="col-sm-12">
-      <%= link_to "Reset", edit_book_madlib_path(@madlib.book_id, @madlib.id, :reset => "true") %>
+      <%= link_to "Reset", edit_book_madlib_path(@madlib.book_id, @madlib.id, :reset => "true"),
+      :class => "reset-madlib" %>
   </div>
 </div>
 
