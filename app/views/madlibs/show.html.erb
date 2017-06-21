@@ -9,8 +9,9 @@
   <div class="row">
     <div class="col-sm-12">
       <% @madlib.story.split.each do |word| %>
+        <% length = word.length%>
         <% if word[0] == "_" %>
-          <span style="color:red;"><%= word[0..5] %></span><span><%= word[6]%></span>
+          <span style="color:red;"><%= word[0..length-1] %></span>
         <% else %>
           <span><%= word %></span>
         <% end %>
