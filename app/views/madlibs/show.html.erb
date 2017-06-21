@@ -1,17 +1,21 @@
+<div class="show-madlibs-main-container">
+
 <div class="container-fluid  text-center">
-  <div class="row">
+  <div class="row show-madlibs-header">
     <div class="col-sm-12">
       <h1><%= @madlib.title %></h1>
+      <h4>from the book:</h4>
+      <h3><%= link_to @madlib.book.title, book_madlibs_path(@madlib.book_id) %></h3>
     </div>
   </div>
 
-<div class="show-container">
+<div class="show-madlibs-container">
   <div class="row">
     <div class="col-sm-12">
       <% @madlib.story.split.each do |word| %>
         <% length = word.length%>
         <% if word[0] == "_" %>
-          <span style="color:red;"><%= word[0..length-1] %></span>
+          <span class="user-word"><%= word[0..length-1] %></span>
         <% else %>
           <span><%= word %></span>
         <% end %>
@@ -25,9 +29,9 @@
 
 <div class="row">
     <div class="col-sm-12">
-      <p><%= link_to "Reset", edit_book_madlib_path(@madlib.book_id, @madlib.id, :reset => "true") %></p>
-      <p><%= link_to @madlib.book.title, book_madlibs_path(@madlib.book_id) %></p>
+      <%= link_to "Reset", edit_book_madlib_path(@madlib.book_id, @madlib.id, :reset => "true") %>
   </div>
 </div>
 
+</div>
 </div>
