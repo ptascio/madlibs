@@ -11,16 +11,17 @@
   </head>
 
   <body>
-    <header>
-      <%= render "searchoverlay" %>
-      <%= render 'navbar' %>
-      <% if !current_user.nil? %>
-        <%= render 'usernavbar' %>
-      <% else %>
-        <%= render 'signupnav' %>
-      <% end %>
-    </header>
+
     <div class="main-container">
+      <header>
+        <%= render "searchoverlay" %>
+        <%= render 'navbar' %>
+        <% if !current_user.nil? %>
+          <%= render 'usernavbar' %>
+        <% else %>
+          <%= render 'signupnav' %>
+        <% end %>
+      </header>
       <div class="body-container">
           <%= yield %>
       </div>
