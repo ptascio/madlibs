@@ -21,11 +21,10 @@
       <% end %>
     </header>
     <div class="main-container">
-      <%= yield %>
-      <div class="clearFloat"></div>
+      <div class="body-container">
+          <%= yield %>
+      </div>
+      <%= render 'footer'%>
     </div>
-    <%= render 'footer'%>
-
-
   </body>
 </html>
