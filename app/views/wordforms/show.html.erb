@@ -22,7 +22,7 @@
 </div>
 
 <div class="word-submit-form container-fluid">
-  <div class="row">
+  <div class="row word-submit-form-row">
     <div class="col-sm-12 text-center">
       <p>This story needs a total of <%= @wordform.count %> words.</p>
       <%= form_for(@wordform) do |f| %>
@@ -63,7 +63,9 @@
           <%= f.submit "Submit", :class => "submit-button" %>
         <% end %>
       <% end %>
-      <%= link_to "More Stories from the book " + @madlib.book.title, book_madlibs_path(@madlib.book_id) %>
+      <div class="more-stories">
+        <%= link_to "More Stories from the book " + @madlib.book.title, book_madlibs_path(@madlib.book_id) %>
+      </div>
     </div>
   </div>
 </div>
