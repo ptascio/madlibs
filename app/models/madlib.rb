@@ -54,4 +54,14 @@ class Madlib < ActiveRecord::Base
     end
   end
 
+  def self.create_wordform(madlib)
+    @wordform = Wordform.new
+    @wordform.madlib_id = madlib.id
+    @wordform.words = @wordform.make_user_form(madlib)
+    @wordform.save!
+    madlib.wordform = @wordform
+    madlib.save!
+    return [madlib, @wordform]
+  end
+
 end
