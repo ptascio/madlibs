@@ -1,22 +1,26 @@
-<% if current_user %>
-<p>Hi <%= current_user[:username] %>!</p>
+<div class="container-fluid main-books-container">
+  <div class="row books-container text-center">
+    <div class="col-sm-12">
+      <% if current_user %>
+      <h1>Hi <%= current_user[:username] %>!</h1>
+        <p class="book-errors"><%= flash[:error] %></p>
+      <form class="" action="/books" method="post">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+        <label for="title">Enter the title of the book you'd like to make:</label><br>
+        <input type="text" name="book[title]" value=""><br>
+        <input type="submit" name="" value="Create Book"><br>
+      </form>
 
-<form class="" action="/books" method="post">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
-  <label for="title">Enter the title of the book you'd like to make:</label>
-  <input type="text" name="book[title]" value="">
-  <input type="submit" name="" value="Create Book">
-</form>
-
-<p><%= flash[:error] %></p>
-
-<% else %>
-<p>
-  <%= link_to "Login", session_path %> or
-  <%= link_to "Signup", new_user_path %>
-  to create a book!
-</p>
-<% end %>
+      <% else %>
+      <p>
+        <%= link_to "Login", session_path %> or
+        <%= link_to "Signup", new_user_path %>
+        to create a book!
+      </p>
+      <% end %>
+    </div>
+  </div>
+</div>

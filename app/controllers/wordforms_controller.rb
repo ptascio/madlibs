@@ -7,6 +7,8 @@ class WordformsController < ApplicationController
   end
 
   def create
+    #this is in the Madlib model
+    #when user creates a story wordform is automatically created
     @wordform = Wordform.new
     @wordform.madlib_id = params[:madlib_id]
     @madlib = Madlib.find(params[:madlib_id])

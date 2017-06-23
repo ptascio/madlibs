@@ -1,9 +1,6 @@
 <h1 id="h1-overrides" class="home-page"><%= @book.title %></h1>
 <div class="container-fluid">
-  <% if @madlibs.empty? %>
-    <h2>There are no stories for this book yet!</h2>
-    <p>Write one today!</p>
-  <% end %>
+
 
   <% if !current_user.nil? %>
     <% if current_user[:id] == @book.user_id %>
@@ -19,6 +16,19 @@
   <% end %>
 
   <div class="row madlibs-list">
+    <% if @madlibs.empty? %>
+    <div class="row text-center">
+      <div class="col-sm-12">
+        <h2>There are no stories for this book yet!</h2>
+      </div>
+      <div class="col-sm-12">
+        <h2>Write one now!</h2>
+      </div>
+    </div>
+
+
+
+    <% end %>
     <% @madlibs.each do |ml| %>
       <div class="col-sm-3 text-center madlibs-list-wrapper">
         <% if ml.wordform.misswords.nil? %>

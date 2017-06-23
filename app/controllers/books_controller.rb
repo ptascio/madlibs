@@ -25,6 +25,8 @@ class BooksController < ApplicationController
     @already_have_title = Book.find_by_title(params[:book][:title])
     if @already_have_title
       redirect_to new_book_path, :flash => { :error => "There is already a book by that name. Choose a different name." }
+    elsif params[:book][:title].length < 1
+      redirect_to new_book_path, :flash => { :error => "Looks like you haven't entered a title yet!" }
     else
       @book = Book.new(book_params)
       @book.user_id = @user.id
