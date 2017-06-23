@@ -32,7 +32,14 @@ class MadlibsController < ApplicationController
         @madlib.title = title
         @madlib.story = story
         @madlib.save!
-        redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
+        @wordform = Wordform.new
+        @wordform.madlib_id = @madlib.id
+        @wordform.words = @wordform.make_user_form(@madlib)
+        @wordform.save!
+        @madlib.wordform = @wordform
+        @madlib.save!
+        redirect_to wordform_path(@wordform.id, @madlib)
+        # redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
       end
     else
       title = params[:madlib][:title]
@@ -47,7 +54,14 @@ class MadlibsController < ApplicationController
         else
           @madlib.book_id = params[:madlib][:book_id]
           @madlib.save!
-          redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
+          @wordform = Wordform.new
+          @wordform.madlib_id = @madlib.id
+          @wordform.words = @wordform.make_user_form(@madlib)
+          @wordform.save!
+          @madlib.wordform = @wordform
+          @madlib.save!
+          redirect_to wordform_path(@wordform.id, @madlib)
+          # redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
         end
       end
     end
