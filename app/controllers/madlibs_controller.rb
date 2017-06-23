@@ -32,7 +32,6 @@ class MadlibsController < ApplicationController
         @madlib.title = title
         @madlib.story = story
         @madlib.save!
-        debugger
         redirect_to controller: 'wordforms', action: 'new', madlib: @madlib
       end
     else

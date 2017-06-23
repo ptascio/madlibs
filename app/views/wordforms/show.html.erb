@@ -60,12 +60,13 @@
               %><br>
             </div>
           <% end %>
-          <%= f.submit "Submit", :class => "submit-button" %>
+          <div class="submit-container">
+            <%= f.submit "Submit", :class => "submit-button" %>
+          </div>
+
         <% end %>
       <% end %>
-      <div class="more-stories">
-        <%= link_to "More Stories from the book " + @madlib.book.title, book_madlibs_path(@madlib.book_id) %>
-      </div>
+        <%= link_to "More Stories from the book " + @madlib.book.title, book_madlibs_path(@madlib.book_id), :class => "more-stories" %>
     </div>
   </div>
 </div>
