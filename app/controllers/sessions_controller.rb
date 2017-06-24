@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if request.env['omniauth.auth']
       user = User.create_with_omniauth(request.env['omniauth.auth'])
       login!(user)
-      redirect_to user_path(user.id)
+      redirect_to root_path
     else
       user = User.find_by_credentials(
         params[:user][:username],
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
         redirect_to session_path, :flash => { :error => "Sorry, we could not find this account." }
       else
         login!(user)
-        redirect_to user_path(user.id)
+        redirect_to root_path
       end
     end
   end
