@@ -6,76 +6,78 @@
 
 <h1 id="h1-overrides" class="home-page"><%= updatemessage %></h1>
 <div class="container-fluid">
-  <div class="row" id="login-row">
-    <div class="col-sm-12 text-center">
-      <form action="<%= action %>" method="post" class="log-in-form" autocomplete="off">
-        <% if flash[:error]%>
-          <p class="form-errors"><%= flash[:error] %></p>
-        <% end %>
-      <input
-        name="_method"
-        type="hidden"
-        value="<%= method %>">
-      <input
-        name="authenticity_token"
-        type="hidden"
-        value="<%= form_authenticity_token %>">
+  <div class="account-sign-in-container">
+    <div class="row" id="login-row">
+      <div class="col-sm-12 text-center">
+        <form action="<%= action %>" method="post" class="log-in-form" autocomplete="off">
+          <% if flash[:error]%>
+            <p class="form-errors"><%= flash[:error] %></p>
+          <% end %>
+        <input
+          name="_method"
+          type="hidden"
+          value="<%= method %>">
+        <input
+          name="authenticity_token"
+          type="hidden"
+          value="<%= form_authenticity_token %>">
 
-      <label for="user_username" class="log-in-label"><%= updateusername %></label><br>
-      <input
-        id="user_username"
-        name="user[username]"
-        type="text"
-        id="user_username" class="log-in-inputs"
-        autocomplete="off"
-        >
-      <br>
+        <label for="user_username" class="log-in-label"><%= updateusername %></label><br>
+        <input
+          id="user_username"
+          name="user[username]"
+          type="text"
+          id="user_username" class="log-in-inputs"
+          autocomplete="off"
+          >
+        <br>
 
-      <label for="user_password" class="log-in-label">Password</label><br>
-      <input
-        id="user_password"
-        name="user[password]"
-        type="password"
-        id="user_password" class="log-in-inputs"
-        autocomplete="off"
-        >
-      <br>
+        <label for="user_password" class="log-in-label">Password</label><br>
+        <input
+          id="user_password"
+          name="user[password]"
+          type="password"
+          id="user_password" class="log-in-inputs"
+          autocomplete="off"
+          >
+        <br>
 
-    <% if method == "post"%>
-      <label for="user_password" class="log-in-label">Confirm Password</label><br>
-      <input
-        id="user_password"
-        name="confirm_password"
-        type="password"
-        id="user_password" class="log-in-inputs"
-        autocomplete="off"
-        >
-      <br>
-    <% end %>
+      <% if method == "post"%>
+        <label for="user_password" class="log-in-label">Confirm Password</label><br>
+        <input
+          id="user_password"
+          name="confirm_password"
+          type="password"
+          id="user_password" class="log-in-inputs"
+          autocomplete="off"
+          >
+        <br>
+      <% end %>
 
-  <input type="submit" class="log-in-inputs log-in-button" value="<%= message %>"><br>
-        <%if current_user.nil? %>
-          <a href="/auth/facebook">
-            <button type="button" name="button" id="facebook-button">
-              <i class="fa fa-facebook"></i>
-                Signup with Facebook
-            </button>
-          </a>
-        <% end %>
-        <% if current_user %>
-          <%= link_to user_path(current_user.id),
-            :action => :destroy,
-            :method => :delete,
-            :class => "remove-underline",
-            data: { confirm: "Are you sure you want to delete your account?" } do %>
-              <div class="log-in-inputs log-in-button delete-account">
-                Delete Account
-              </div>
-            <% end %>
-        <% end %>
-      </form>
+    <input type="submit" class="log-in-inputs log-in-button" value="<%= message %>"><br>
+          <%if current_user.nil? %>
+            <a href="/auth/facebook">
+              <button type="button" name="button" id="facebook-button">
+                <i class="fa fa-facebook"></i>
+                  Signup with Facebook
+              </button>
+            </a>
+          <% end %>
+          <% if current_user %>
+            <%= link_to user_path(current_user.id),
+              :action => :destroy,
+              :method => :delete,
+              :class => "remove-underline",
+              data: { confirm: "Are you sure you want to delete your account?" } do %>
+                <div class="log-in-inputs log-in-button delete-account">
+                  Delete Account
+                </div>
+              <% end %>
+          <% end %>
+        </form>
+
+      </div>
 
     </div>
-
   </div>
 </div>

@@ -1,9 +1,18 @@
+<% if current_user %>
+  <% name = current_user.username
+    greeting = "Welcome back #{name}!"
+    %>
+<% else %>
+  <%greeting = "Welcome to Madlibs on Rails!"%>
+<% end %>
+
 <h1 id="h1-overrides" class="home-page">WELCOME!</h1>
 <div class="container-fluid">
   <div class="welcome-center">
     <div class="row">
       <div class="col-sm-12 text-center inside-welcome">
-        <h2>Welcome to Madlibs on Rails!</h2>
+        <h2><%= greeting %></h2>
+        <% if current_user.nil? %>
         <p>We are happy to offer a variety of Madlibs for you to play.</p>
         <p>But, if you'd like to Make Your Own Madlibs Books</p>
           <%= link_to "Create An Account", new_user_path, :class => "welcome-center-links" %><br>
@@ -11,6 +20,20 @@
           <%= link_to "Sign In", session_path, :class => "welcome-center-links"%><br>
         <p>If you just want to start playing,</p>
           <%= link_to "Check Out Our Books Now!", books_path, :class => "welcome-center-links"  %><br>
+        <% else %>
+        <div class="welcome-links-container">
+          <%= link_to "Check Out Your Books", books_path, :class => "welcome-center-links"  %><br>
+        </div>
+        <div class="welcome-links-container">
+          <%= link_to "Make a New Book", new_book_path, :class => "welcome-center-links"  %><br>
+        </div>
+        <div class="welcome-links-container">
+          <%= link_to "My Profile", user_path(current_user.id), :class => "welcome-center-links"  %><br>
+        </div>
+        <div class="welcome-links-container">
+          <%= link_to "Logout", session_path, :method => :delete, :class => "welcome-center-links"  %><br>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
