@@ -2,25 +2,15 @@
 <div class="container-fluid">
   <div class="welcome-center">
     <div class="row">
-      <div class="col-sm-12 text-center">
+      <div class="col-sm-12 text-center inside-welcome">
         <h2>Welcome to Madlibs on Rails!</h2>
         <p>We are happy to offer a variety of Madlibs for you to play.</p>
         <p>But, if you'd like to Make Your Own Madlibs Books</p>
-        <div class="welcome-links-container">
           <%= link_to "Create An Account", new_user_path, :class => "welcome-center-links" %><br>
-        </div>
         <p>or</p>
-        <div class="welcome-links-container">
           <%= link_to "Sign In", session_path, :class => "welcome-center-links"%><br>
-        </div>
-
-
         <p>If you just want to start playing,</p>
-        <div class="welcome-links-container">
           <%= link_to "Check Out Our Books Now!", books_path, :class => "welcome-center-links"  %><br>
-        </div>
-
-        <p></p>
       </div>
     </div>
   </div>
