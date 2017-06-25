@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @book_count = Book.where(:user_id => current_user.id).count
     if current_user != @user
       redirect_to user_path(current_user)
     end
