@@ -1,2 +1,11 @@
-
-<%= render "form", user: @user %>
+<h1 id="h1-overrides" class="home-page">My Account</h1>
+<div class="conainer-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Username: <%= current_user.username%></h2>
+    </div>
+    <div class="col-sm-12">
+      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+    </div>
+  </div>
+</div>

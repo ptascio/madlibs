@@ -28,6 +28,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    render 'edit'
+  end
+
   def update
     @user = User.find(params[:id])
     if current_user.is_password?(params[:user][:password])
