@@ -1,10 +1,12 @@
 <h1 id="h1-overrides" class="home-page">Books</h1>
 <div class="container-fluid">
-  <div class="row">
+  <div class="madlibs-list-container">
+  <div class="row madlibs-book-list">
   <% @books.each do |bk| %>
-    <div class="col-sm-2 text-center">
-      <%= link_to bk.title, book_madlibs_path(bk.id) %>
+    <div class="col-sm-3 text-center madlibs-books-wrapper">
+      <%= link_to bk.title, book_madlibs_path(bk.id), {:class=> "madlibs-books-title"}  %>
     </div>
   <% end %>
+</div>
   </div>
 </div>
