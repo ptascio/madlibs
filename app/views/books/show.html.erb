@@ -7,10 +7,10 @@
           <p>This action cannot be undone.</p>
           <div class="row">
             <div class="col-sm-12">
-              <%= button_to "Yes, delete this", book_path, :method => :delete, :class => "delete-book-button" %>
+              <%= button_to "Yes, delete this book", book_path, :method => :delete, :class => "delete-book-button" %>
             </div>
           </div>
-          <div class="row">
+          <div class="row dont-delete">
             <div class="col-sm-12">
               <%= link_to "No, take me back", book_madlibs_path(@book.id), :class => "dont-delete-book"  %>
             </div>
