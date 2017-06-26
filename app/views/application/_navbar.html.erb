@@ -10,7 +10,7 @@
               </div>
             </button>
             <ul class="dropdown-menu" id="dropdown-overrides">
-              <li><%= link_to "Titles", books_path %></li>
+              <li><%= link_to "Books", books_path %></li>
               <% if current_user.nil? %>
                 <li><%= link_to "Login", session_path%></li>
                 <li><%= link_to "Signup", new_user_path %></li>
@@ -28,8 +28,8 @@
               <% end %>
               <li><%= link_to "Home", root_path %></li>
               <li>
-                <a class="social-links" target="_blank" href="https://www.facebook.com/TheOriginalMadLibs"><i id="social-icons" class="fa fa-facebook fa-facebook-dropdown"></i></a>
-                <a class="social-links" target="_blank" href="https://twitter.com/MadLibs"><i id="social-icons" class="fa fa-twitter fa-twitter-dropdown"></i></a>
+                <a class="social-links" target="_blank" href="https://www.facebook.com/MadlibsOnRails"><i id="social-icons" class="fa fa-facebook fa-facebook-dropdown"></i></a>
+                <a class="social-links" target="_blank" href="https://twitter.com/madlibsonrails"><i id="social-icons" class="fa fa-twitter fa-twitter-dropdown"></i></a>
               </li>
 
                 <%= render "emailform" %>
