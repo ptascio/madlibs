@@ -1,23 +1,26 @@
 <div class="text-center madlibs-form container-fluid">
   <%= link_to "Cancel", book_madlibs_path(@madlib.book_id), :class => "log-in-inputs log-in-button delete-account" %>
-<div class="row">
-  <div class="col-sm-4 col-md-6 text-center">
-    <div class="madlibs-form-wrapper">
-      <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
-        <input
-           name="authenticity_token"
-           type="hidden"
-           value="<%= form_authenticity_token %>">
-        <input name="reset" type="hidden" value="true">
-        <input name="madlib[id]" type="hidden" value="<%= @madlib.id %>">
-        <input type="hidden" name="madlib[book_id]" value="<%= @book.id %>">
-        <label for="title">Title:</label><br>
-        <input type="text" name="madlib[title]" value="<%= @madlib.title %>"><br />
-        <label for="">Story:</label><br />
-        <textarea type="text" name="madlib[story]" value="" rows="12" cols="50"><%= @madlib.story %></textarea><br>
-        <input type="submit" name="" value="Edit Story">
-      </form>
+<div class="madlibs-edit-wrapper">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <div class="madlibs-form-wrapper">
+        <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
+          <input
+             name="authenticity_token"
+             type="hidden"
+             value="<%= form_authenticity_token %>">
+          <input name="reset" type="hidden" value="true">
+          <input name="madlib[id]" type="hidden" value="<%= @madlib.id %>">
+          <input type="hidden" name="madlib[book_id]" value="<%= @book.id %>">
+          <label for="title">Title:</label><br>
+          <input type="text" name="madlib[title]" value="<%= @madlib.title %>"><br />
+          <label for="">Story:</label><br />
+          <textarea type="text" name="madlib[story]" value="" rows="12" cols="50"><%= @madlib.story %></textarea><br>
+          <input type="submit" name="" value="Edit Story">
+        </form>
+      </div>
     </div>
   </div>
 </div>
+
 </div>
