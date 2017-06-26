@@ -1,6 +1,7 @@
 <div class="text-center madlibs-form container-fluid">
-  <%= link_to "Cancel", book_madlibs_path(@madlib.book_id) %>
-  <div class="col-sm-4 col-md-6">
+  <%= link_to "Cancel", book_madlibs_path(@madlib.book_id), :class => "log-in-inputs log-in-button delete-account" %>
+<div class="row">
+  <div class="col-sm-4 col-md-6 text-center">
     <div class="madlibs-form-wrapper">
       <form class="" action="/books/<%= @book.id %>/madlibs" method="post">
         <input
@@ -14,10 +15,9 @@
         <input type="text" name="madlib[title]" value="<%= @madlib.title %>"><br />
         <label for="">Story:</label><br />
         <textarea type="text" name="madlib[story]" value="" rows="12" cols="50"><%= @madlib.story %></textarea><br>
-        <input type="submit" name="" value="Create Madlib">
+        <input type="submit" name="" value="Edit Story">
       </form>
     </div>
   </div>
 </div>
-<!--
-/books/<%= @book.id %>/madlibs/<%= @madlib.id %> -->
+</div>
