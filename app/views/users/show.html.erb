@@ -8,9 +8,13 @@
       <div class="col-sm-12">
         <h2>You've made <%= @book_count %> books so far.</h2>
       </div>
+      <% if !@most_recent.nil? %>
       <div class="col-sm-12">
         <h2>You're most recent book is called:<br> <u><%= @most_recent.title %></u>.</h2>
       </div>
+      <% else %>
+        <h2>Write your first book today!</h2>
+      <% end %>
       <div class="col-sm-12">
         <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
       </div>
