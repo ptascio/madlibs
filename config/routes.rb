@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   resources :wordforms
   resources :mailers, only: [:create]
 
-  get ':instructions' => 'static#instructions'
+  get '/instructions' => 'statics#instructions'
+  get '/storyinstructions' => 'statics#storyinstructions'
   get 'auth/facebook/callback', to: 'sessions#create'
   get 'auth/facebook/callback', to: 'users#create'
   get 'auth/failure', to: redirect("/")
