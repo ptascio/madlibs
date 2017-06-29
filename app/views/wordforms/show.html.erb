@@ -14,7 +14,7 @@
       <div class="col-sm-12">
         <p>from the book:</p>
         <h2>
-          <%= @madlib.book.title %>
+          <%= link_to @madlib.book.title, book_madlibs_path(@madlib.book_id) %>
         </h2>
       </div>
     </div>
