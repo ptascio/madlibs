@@ -9,19 +9,23 @@
         <h2>You've made <%= @book_count %> books so far.</h2>
       </div>
       <% if !@user_books.nil? %>
-      <%debugger%>
       <div class="col-sm-12">
-        <h2>You're most recent book is called:<br> <u><%= @user_books.last.title %></u>.</h2>
-        <ul>
-          <% @user_books.each do |book| %>
-        <li><%= book.title %></li>
-          <% end %>
-        </ul>
+        <h2>You're most recent book is called:<br>
+          <div class="user-books-list">
+            <%= link_to @user_books.last.title, book_madlibs_path(@user_books.last.id) %>
+          </div>
+        and was created on <%= @user_books.last.created_at.month %>/<%= @user_books.last.created_at.day %>/<%= @user_books.last.created_at.year %>.</h2>
       </div>
+      <h2>Here are all the books you've made so far:</h2>
+          <% @user_books.each do |book| %>
+            <div class="col-sm-12 user-books-list">
+              <%= link_to book.title, book_madlibs_path(book.id) %>
+            </div>
+          <% end %>
       <% else %>
         <h2>Write your first book today!</h2>
       <% end %>
-      <div class="col-sm-12">
+      <div class="col-sm-12 edit-user-profile">
         <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
       </div>
     </div>

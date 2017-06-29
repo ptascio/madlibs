@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <ul class="usernav">
-      <li class="col-sm-2 "><h2 class="h2-fun">Hello <%= current_user.username.capitalize %>!</h2></li>
+      <li class="col-sm-2 "><h2 class="h2-fun">Hello <%= current_user.username %>!</h2></li>
       <li class="col-sm-2"><%= link_to "Make a book", new_book_path %></li>
       <li class="col-sm-2"><%= link_to "Books", books_path %></li>
       <li class="col-sm-2"><%= link_to "Me", user_path(current_user.id) %></li>
