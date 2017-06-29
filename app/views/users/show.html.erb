@@ -9,8 +9,14 @@
         <h2>You've made <%= @book_count %> books so far.</h2>
       </div>
       <% if !@user_books.nil? %>
+      <%debugger%>
       <div class="col-sm-12">
         <h2>You're most recent book is called:<br> <u><%= @user_books.last.title %></u>.</h2>
+        <ul>
+          <% @user_books.each do |book| %>
+        <li><%= book.title %></li>
+          <% end %>
+        </ul>
       </div>
       <% else %>
         <h2>Write your first book today!</h2>
