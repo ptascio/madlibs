@@ -5,8 +5,9 @@ class BooksController < ApplicationController
       params[:search] = ""
     elsif !current_user.nil?
       @books = Book.where(:user_id => nil, :exclusive => 0).all
+      @shared_user_books = Book.where(:user_id => !nil, :exclusive => 1)
       @user_books = Book.where(:user_id => current_user.id)
-      @exclusive_books = Book.where(:exclusive => 1)
+      @exclusive_books = Book.where(:exclusive => 1, :user_id => nil)
     else
       @books = Book.where(:user_id => nil, :exclusive => 0).all
       @shared_user_books = Book.where(:user_id => !nil, :exclusive => 1)
