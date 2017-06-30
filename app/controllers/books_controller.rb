@@ -9,6 +9,7 @@ class BooksController < ApplicationController
       @exclusive_books = Book.where(:exclusive => 1)
     else
       @books = Book.where(:user_id => nil, :exclusive => 0).all
+      @shared_user_books = Book.where(:user_id => !nil, :exclusive => 1)
     end
     render "index"
   end
