@@ -1,11 +1,16 @@
 <h1 id="h1-overrides" class="home-page">Books</h1>
 
 <div class="container-fluid">
-  <div class="madlibs-list-container">
-  <div class="row madlibs-book-list">
+  <div class="madlibs-list-container text-center">
+    <div class="row">
+      <div class="col-sm-12 books-header home-books-header">
+        <h2>Madlibs Books</h2>
+      </div>
+    </div>
+  <div class="row madlibs-book-list home-books">
   <% @books.each do |bk| %>
-    <div class="col-sm-3 text-center madlibs-books-wrapper">
-      <%= link_to bk.title, book_madlibs_path(bk.id), {:class=> "madlibs-books-title"}  %>
+    <div class="col-sm-3 text-center madlibs-books-wrapper home-books-wrapper">
+      <%= link_to bk.title, book_madlibs_path(bk.id), {:class=> "madlibs-books-title home-books-title"}  %>
     </div>
   <% end %>
 </div>
@@ -14,8 +19,13 @@
 
 <% if @user_books.length > 0 %>
 <div class="container-fluid">
-  <div class="madlibs-list-container text-center exclusive-header">
-    <h2><%= current_user.username %>'s Books</h2>
+  <div class="madlibs-list-container text-center">
+    <div class="row">
+      <div class="col-sm-12 books-header user-books-header">
+        <h2><%= current_user.username %>'s Books</h2>
+      </div>
+    </div>
+
   <div class="row madlibs-book-list">
   <% @user_books.each do |bk| %>
     <div class="col-sm-3 text-center madlibs-books-wrapper">
@@ -39,12 +49,16 @@
 
 <% if @exclusive_books %>
 <div class="container-fluid">
-  <div class="madlibs-list-container text-center exclusive-header">
-    <h2>Exclusive Content!</h2>
-  <div class="row madlibs-book-list">
+  <div class="madlibs-list-container text-center">
+    <div class="row">
+      <div class="col-sm-12 books-header exclusive-books-header">
+        <h2>Exclusive Content!</h2>
+      </div>
+    </div>
+  <div class="row madlibs-book-list exclusive-books">
   <% @exclusive_books.each do |bk| %>
-    <div class="col-sm-3 text-center madlibs-books-wrapper">
-      <%= link_to bk.title, book_madlibs_path(bk.id), {:class=> "madlibs-books-title"}  %>
+    <div class="col-sm-3 text-center madlibs-books-wrapper exclusive-books-wrapper">
+      <%= link_to bk.title, book_madlibs_path(bk.id), {:class=> "madlibs-books-title exclusive-books-title"}  %>
     </div>
   <% end %>
 </div>
