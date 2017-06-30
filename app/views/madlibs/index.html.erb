@@ -22,6 +22,20 @@
       <div class="col-sm-4">
           <%= button_to "Delete this Book", @book, :method => :get, :class=>"madlibs-list-title-button get-deleting"  %>
       </div>
+      <div class="col-sm-12 text-center explain-books">
+          <p class="dropdown-toggle dropdown-explain" data-toggle="dropdown" >What does this mean?</p>
+            <ul class="dropdown-menu" id="center-ul">
+              <div class="col-sm-12 text-center">
+                <li>When you make a book public that means other users<br>
+                  can see it and play your stories.<br>
+                  Don't worry, you will be the only person who can edit or<br>
+                  delete your book and stories.<br>
+                  You can also make it a private book again anytime.
+                </li>
+              </div>
+            </ul>
+
+      </div>
     </div>
     <% end %>
   <% end %>

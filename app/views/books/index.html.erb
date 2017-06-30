@@ -58,7 +58,7 @@
     </div>
   <div class="row madlibs-book-list">
     <% @shared_user_books.each do |bk| %>
-    <% if bk.author != current_user.username %>
+    <% if ((current_user) && (bk.author != current_user.username)) || (current_user.nil?) %>
     <div class="col-sm-3 text-center madlibs-books-wrapper">
       <%= link_to bk.title, book_madlibs_path(bk.id), {:class=> "madlibs-books-title"}  %>
       <p>by</p>
