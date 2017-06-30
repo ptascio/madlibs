@@ -8,7 +8,7 @@
       <div class="col-sm-12">
         <h2>You've made <%= @book_count %> books so far.</h2>
       </div>
-      <% if !@user_books.nil? %>
+      <% if !@user_books.nil? && @user_books.length > 0 %>
       <div class="col-sm-12">
         <h2>You're most recent book is called:<br>
           <div class="user-books-list">
