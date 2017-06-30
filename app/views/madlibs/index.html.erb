@@ -7,10 +7,19 @@
   <% if !current_user.nil? %>
     <% if current_user[:id] == @book.user_id %>
     <div class="row text-center madlibs-list-title-header">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <%= button_to "Write a story!", new_book_madlib_path, :method => :get, :class=>"madlibs-list-title-button get-writing" %>
       </div>
-      <div class="col-sm-6">
+      <% if @book.exclusive == 0%>
+      <div class="col-sm-4">
+        <%= button_to "Make this book Exclusive!", book_path(@book.id), :method => :patch, params: { exclusive: :true }, :class=>"madlibs-list-title-button make-exclusive" %>
+      </div>
+      <% else %>
+      <div class="col-sm-4">
+        <%= button_to "Make this book Private!", book_path(@book.id), :method => :patch, params: { exclusive: :false }, :class=>"madlibs-list-title-button make-exclusive" %>
+      </div>
+      <% end %>
+      <div class="col-sm-4">
           <%= button_to "Delete this Book", @book, :method => :get, :class=>"madlibs-list-title-button get-deleting"  %>
       </div>
     </div>

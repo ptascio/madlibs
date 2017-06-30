@@ -22,6 +22,19 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+  def update
+    @book = Book.find(params[:id])
+    if params[:exclusive] == "true"
+      @book.exclusive = 1
+      @book.save!
+      redirect_to book_madlibs_path(@book.id)
+    elsif params[:exclusive] == "false"
+      @book.exclusive = 0
+      @book.save!
+      redirect_to book_madlibs_path(@book.id)
+    end
+  end
+
   def create
     @user = current_user
     @already_have_title = Book.find_by_title(params[:book][:title])
