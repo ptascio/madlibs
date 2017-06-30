@@ -4,9 +4,11 @@ class BooksController < ApplicationController
       @books = Book.search(params[:search])
       params[:search] = ""
     elsif !current_user.nil?
-      @books = Book.find_user_books(current_user)
+      @books = Book.where(:user_id => nil, :exclusive => 0).all
+      @user_books = Book.where(:user_id => current_user.id)
+      @exclusive_books = Book.where(:exclusive => 1)
     else
-      @books = Book.where(:user_id => nil).all
+      @books = Book.where(:user_id => nil, :exclusive => 0).all
     end
     render "index"
   end

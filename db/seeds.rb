@@ -30,5 +30,7 @@ tuesday_form = Wordform.create({words: "1: Adjective, 2: Noun, 3: Verb, 4: Verb,
   5: Noun"})
 @sam_the_snake.wordform = sam_form
 
-@wu_tang = Book.create({title:"Killer Bees!"})
-@rza = Madlib.create({title: "Hi", story: 'Hi', book_id:2})
+@wu_tang = Book.create({title:"13 Chambers!", exclusive: 1})
+@methodman = Madlib.create({title: "Method Man", story: 'Hi I am the _adj_ Man', book_id: 2})
+method_man_wordform = Wordform.create({words: "1. Adjective"})
+@methodman.wordform = method_man_wordform
