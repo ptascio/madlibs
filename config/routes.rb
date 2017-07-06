@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/instructions' => 'statics#instructions'
   get '/storyinstructions' => 'statics#storyinstructions'
+  get '/exclusive' => 'statics#exclusiveexplanation'
   get 'auth/facebook/callback', to: 'sessions#create'
   get 'auth/facebook/callback', to: 'users#create'
   get 'auth/failure', to: redirect("/")
