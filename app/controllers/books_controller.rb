@@ -48,9 +48,7 @@ class BooksController < ApplicationController
       @book = Book.new(book_params)
       @book.user_id = @user.id
       @book.author = @user.username
-      debugger
       @book.save
-      debugger
       redirect_to book_madlibs_path(@book)
     end
   end

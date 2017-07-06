@@ -12,7 +12,7 @@
       </div>
       <% if @book.exclusive == 0%>
       <div class="col-sm-4">
-        <%= button_to "Make this book Exclusive!", book_path(@book.id), :method => :patch, params: { exclusive: :true }, :class=>"madlibs-list-title-button make-exclusive" %>
+        <%= button_to "Make this book Public!", book_path(@book.id), :method => :patch, params: { exclusive: :true }, :class=>"madlibs-list-title-button make-exclusive" %>
       </div>
       <% else %>
       <div class="col-sm-4">
