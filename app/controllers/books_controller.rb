@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def index
     if !params[:search].nil? && !params[:search].empty?
       @books = Book.search(params[:search])
+      debugger
       params[:search] = ""
     elsif !current_user.nil?
       @books = Book.where(:user_id => nil, :exclusive => 0).all
