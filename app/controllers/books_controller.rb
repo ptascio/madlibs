@@ -3,6 +3,9 @@ class BooksController < ApplicationController
     if !params[:search].nil? && !params[:search].empty?
       if current_user.nil?
         @books = Book.search(params[:search])
+      elsif !current_user.nil?
+        @books = Book.user_search(params[:search])
+        debugger
       end
       params[:search] = ""
     elsif !current_user.nil?
