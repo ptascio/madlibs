@@ -64,11 +64,17 @@
 <% else %>
   <% if current_user %>
   <div class="container-fluid">
+    <div class="madlibs-list-container text-center">
     <div class="row">
-      <div class="col-sm-12 text-center">
+      <div class="col-sm-12 books-header user-books-header">
         <h2>You haven't created any books yet!</h2>
+      </div>
+    </div>
+      <div class="row madlibs-book-list">
+      <div class="col-sm-12 text-center madlibs-books-wrapper">
         <h2><%= link_to "Make a book", new_book_path %></h2>
       </div>
+    </div>
     </div>
   </div>
   <% end %>
@@ -80,6 +86,7 @@
     <div class="row">
       <div class="col-sm-12 books-header user-books-header">
         <h2>Shared Books</h2>
+        <p>What are these?</p>
       </div>
     </div>
   <div class="row madlibs-book-list">
