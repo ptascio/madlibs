@@ -8,12 +8,14 @@ class Book < ActiveRecord::Base
     )
   end
 
-  def self.user_search(search)
+  def self.user_search(search, user_id)
     where(
     '(title like ? AND exclusive = ?) OR
-    (title like ? AND exclusive = ? AND user_id IS NULL)',
+    (title like ? AND exclusive = ? AND user_id IS NULL) OR
+    (title like ? AND exclusive = ? AND user_id = ?)',
      "%#{search}%", 0,
-     "%#{search}%", 1
+     "%#{search}%", 1,
+     "%#{search}%", 1, user_id
     )
   end
 
