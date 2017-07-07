@@ -1,17 +1,18 @@
 class BooksController < ApplicationController
   def index
     if !params[:search].nil? && !params[:search].empty?
-      @books = Book.search(params[:search])
-      debugger
+      if current_user.nil?
+        @books = Book.search(params[:search])
+      end
       params[:search] = ""
     elsif !current_user.nil?
       @books = Book.where(:user_id => nil, :exclusive => 0).all
-      @shared_user_books = Book.where(:user_id => !nil, :exclusive => 1)
+      @shared_user_books = Book.where(:user_id => !nil, :exclusive => 0)
       @user_books = Book.where(:user_id => current_user.id)
       @exclusive_books = Book.where(:exclusive => 1, :user_id => nil)
     else
       @books = Book.where(:user_id => nil, :exclusive => 0).all
-      @shared_user_books = Book.where(:user_id => !nil, :exclusive => 1)
+      @shared_user_books = Book.where(:user_id => !nil, :exclusive => 0)
     end
     render "index"
   end
@@ -49,6 +50,7 @@ class BooksController < ApplicationController
       @book = Book.new(book_params)
       @book.user_id = @user.id
       @book.author = @user.username
+      @book.exclusive = 1
       @book.save
       redirect_to book_madlibs_path(@book)
     end
