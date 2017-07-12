@@ -71,7 +71,7 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.default_url_options = { host: 'https://madlibsonrails.herokuapp.com/' }
 config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
-    port: 25,
+    port: 587,
     domain: "gmail.com",
     authentication: "plain",
     user_name: ENV['GMAIL_USERNAME'],
