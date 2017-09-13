@@ -26,6 +26,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'bcrypt'
 gem 'figaro'
 gem 'omniauth-facebook'
+gem 'rspec-core'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
