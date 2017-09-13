@@ -1,4 +1,4 @@
-require "rails_helper";
+require "rails_helper"
 
 RSpec.describe Book, :type => :model do
   describe "#search" do
@@ -33,6 +33,10 @@ RSpec.describe Book, :type => :model do
       todd_book.save!
       todds_ex_book = Book.user_search("Exclusive", todd_user.id)
       expect(todds_ex_book[0].title).to eq("Exclusive Book")
+    end
+
+    it "won't return exclusive books if no current_user_id" do
+
     end
   end
 
