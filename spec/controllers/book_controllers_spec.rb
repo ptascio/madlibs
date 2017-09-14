@@ -79,7 +79,8 @@ RSpec.describe BooksController, :type => :controller do
   describe "PATCH update book" do
     it "changes exclusive attribute" do
       put :update, :id => @reg_book.id, :exclusive => true
-      puts assigns(:book)
+      updated_book = assigns(:book)
+      expect(updated_book).to have_attributes(:exclusive => 1)
     end
   end
 
