@@ -63,4 +63,16 @@ RSpec.describe BooksController, :type => :controller do
       expect(books).to eq(nil)
     end
   end
+
+  describe "POST create book" do
+    it "rejects book if title already exists" do
+      reg3_book = Book.create(title: "Regular Book")
+      expect(reg3_book.valid?).to be(false)
+    end
+
+    it "rejects book if title id blank" do
+      reg3_book = Book.create(title: "")
+      expect(reg3_book.errors.full_messages[0]).to eq("Title can't be blank")
+    end
+  end
 end

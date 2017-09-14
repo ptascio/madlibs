@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   has_many :madlibs
+  validates :title, presence: true, uniqueness: true
 
   def self.search(search)
     where('
