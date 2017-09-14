@@ -78,9 +78,16 @@ RSpec.describe BooksController, :type => :controller do
 
   describe "PATCH update book" do
     it "changes exclusive attribute" do
-      put :update, :id => @reg_book.id, :exclusive => true
+      put :update, params: {:id => @reg_book.id, :exclusive => true}
       updated_book = assigns(:book)
       expect(updated_book).to have_attributes(:exclusive => 1)
+    end
+  end
+
+  describe "DELETE #destroy book" do
+    it "removes book from db" do
+      put :destroy, params: {:id => @reg_book.id}
+      expect(Book.all.length).to be(3)
     end
   end
 
