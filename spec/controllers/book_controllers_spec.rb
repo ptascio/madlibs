@@ -90,6 +90,4 @@ RSpec.describe BooksController, :type => :controller do
       expect(Book.all.length).to be(3)
     end
   end
-
-
 end
