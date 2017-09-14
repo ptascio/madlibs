@@ -43,7 +43,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    debugger
     @user = current_user
     @already_have_title = Book.find_by_title(params[:book][:title])
     if @already_have_title

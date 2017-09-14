@@ -75,4 +75,13 @@ RSpec.describe BooksController, :type => :controller do
       expect(reg3_book.errors.full_messages[0]).to eq("Title can't be blank")
     end
   end
+
+  describe "PATCH update book" do
+    it "changes exclusive attribute" do
+      put :update, :id => @reg_book.id, :exclusive => true
+      puts assigns(:book)
+    end
+  end
+
+
 end
