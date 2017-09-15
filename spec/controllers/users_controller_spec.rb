@@ -65,5 +65,9 @@ RSpec.describe UsersController, :type => :controller do
       patch :update, params: {id: 1, user:{:password => "toddster", :username => "The Todd"}}
       expect(User.first.username).to eq('The Todd')
     end
+
+    it "requires username parameter" do
+      expect{patch :update, params: {:id => 1, user:{:password => "toddster", :username => ""}}}.to_not change(user, :username)
+    end
   end
 end
