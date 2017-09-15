@@ -56,7 +56,6 @@ class UsersController < ApplicationController
       book.destroy
     end
     @user.destroy
-    debugger
     redirect_to root_path
   end
 

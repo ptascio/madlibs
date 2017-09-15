@@ -4,22 +4,22 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "POST #create" do
     it "checks that password and confirm password match" do
-      put :create, params: {:user=>{:password => "password"}, :confirm_password => "passwrrd"}
-      expect(response).to redirect_to('/users/show')
+      post :create, params: {:user=>{:password => "password"}, :confirm_password => "passwrrd"}
+      expect(response).to redirect_to('/users/new')
     end
 
     it "checks that username is present" do
-      put :create, params: {:user=>{:password => "password"}, :confirm_password => "password", :username => ""}
+      post :create, params: {:user=>{:password => "password"}, :confirm_password => "password", :username => ""}
       expect(response).to redirect_to('/users/new')
     end
 
     it "checks that password length >= 6" do
-      put :create, params: {:user=>{:password => "pass"}, :confirm_password => "pass", :username => "Todd"}
+      post :create, params: {:user=>{:password => "pass"}, :confirm_password => "pass", :username => "Todd"}
       expect(response).to redirect_to('/users/new')
     end
 
     it "creates a user" do
-      put :create, params: {:user=>{:password => "password", :username => "Todd"}, :confirm_password => "password"}
+      post :create, params: {:user=>{:password => "password", :username => "Todd"}, :confirm_password => "password"}
       expect(response.status).to be(200)
     end
 
@@ -29,11 +29,27 @@ RSpec.describe UsersController, :type => :controller do
     before do
       User.create!(username: "Todd", password: "toddster")
       Book.create!(title: "Todd's book", user_id: User.first.id)
+      Book.create!(title: "Todd's 2nd book", user_id: User.first.id)
+      Book.create!(title: "My book")
     end
     let(:user) { User.first }
     before { allow(controller).to receive(:current_user) { user } }
     it "finds the user and removes them from db" do
       expect{ delete :destroy, :id => 1}.to change(User, :count)
+    end
+
+    it "destroys user's books" do
+      expect{ delete :destroy, :id => 1}.to change(Book, :count)
+    end
+
+    it "does not destroy other user's books" do
+      delete :destroy, :id => 1
+      expect(Book.count).to be(1)
+    end
+
+    it "redirects to root path" do
+      delete :destroy, :id => 1
+      expect(response).to redirect_to('/')
     end
 
   end
