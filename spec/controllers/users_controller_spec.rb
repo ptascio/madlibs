@@ -51,6 +51,19 @@ RSpec.describe UsersController, :type => :controller do
       delete :destroy, :id => 1
       expect(response).to redirect_to('/')
     end
+  end
 
+  describe "PATCH update" do
+    let(:user) { User.create!(username: "Todd", password: "toddster") }
+    before { allow(controller).to receive(:current_user) { user } }
+    it "checks user password against current_user password" do
+      patch :update, params: {id: 1, user:{:password => "toddddster", :username => "Toddd"}}
+      expect(response).to redirect_to('/users/1')
+    end
+
+    it "changes current_user name" do
+      patch :update, params: {id: 1, user:{:password => "toddster", :username => "The Todd"}}
+      expect(User.first.username).to eq('The Todd')
+    end
   end
 end
