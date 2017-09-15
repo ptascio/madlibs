@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
-  has_many :madlibs
+  has_many :madlibs, :dependent => :destroy
   validates :title, presence: true, uniqueness: true
 
   def self.search(search)

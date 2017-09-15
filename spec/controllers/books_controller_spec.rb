@@ -85,9 +85,18 @@ RSpec.describe BooksController, :type => :controller do
   end
 
   describe "DELETE #destroy book" do
+    before do
+      Madlib.create!(title: "Num 1", story: "This is it", book_id: @reg_book.id)
+      Madlib.create!(title: "Num 2", story: "This is not it", book_id: 1)
+    end
     it "removes book from db" do
       put :destroy, params: {:id => @reg_book.id}
-      expect(Book.all.length).to be(3)
+      expect(Book.count).to be(3)
+    end
+
+    it "removes madlibs associted with book from db" do
+      put :destroy, params: {:id => @reg_book.id}
+      expect(Madlib.count).to be(1)
     end
   end
 end
