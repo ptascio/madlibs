@@ -40,7 +40,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'rails_12factor'
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.20'
 end
 
 group :development, :test do
